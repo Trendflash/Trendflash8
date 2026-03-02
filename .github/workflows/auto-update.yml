@@ -1,0 +1,44 @@
+name: Auto Update TrendFlash (Safe)
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Ensure Python exists
+        run: |
+          if ! command -v python &> /dev/null
+          then
+            echo "Python が見つかりません。Actions 停止"
+            exit 1
+          fi
+
+      - name: Check generate_articles.py exists
+        run: |
+          if [ ! -f "$GITHUB_WORKSPACE/generate_articles.py" ]; then
+            echo "generate_articles.py がルートに存在しません。確認してください"
+            exit 1
+          fi
+
+      - name: Install OpenAI
+        run: pip install --upgrade pip && pip install openai
+
+      - name: Generate articles
+        working-directory: $GITHUB_WORKSPACE
+        run: python generate_articles.py
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "TrendFlash Bot"
+          git add .
+          git commit -m "Auto update articles [skip ci]" || echo "No changes"
+          git push
