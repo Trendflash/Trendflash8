@@ -1,46 +1,276 @@
 ﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>Trendflash</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      font-family: sans-serif;
-      max-width: 800px;
-      margin: auto;
-      padding: 20px;
-      background: #f9f9f9;
-    }
-    h1 {
-      text-align: center;
-      color: #007acc;
-    }
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-    li {
-      margin: 12px 0;
-    }
-    a {
-      text-decoration: none;
-      color: #007acc;
-      font-size: 18px;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TrendFlash | 最新ニュース・国際情勢・経済情報</title>
+<meta name="description" content="TrendFlashは国際情勢、経済、国内ニュースを分かりやすくまとめるニュースサイトです。最新情報を迅速かつ冷静にお届けします。">
+
+<style>
+body{
+  margin:0;
+  font-family:"Segoe UI",Arial,sans-serif;
+  background:#f4f6f9;
+  color:#111;
+}
+header{
+  background:#1e2a38;
+  color:white;
+  padding:20px;
+}
+header h1{
+  margin:0;
+  font-size:26px;
+}
+nav{
+  margin-top:10px;
+}
+nav button{
+  background:none;
+  border:none;
+  color:white;
+  margin-right:15px;
+  font-size:14px;
+  cursor:pointer;
+}
+nav button:hover{text-decoration:underline;}
+#todayDate{font-size:12px;opacity:0.8;margin-top:5px;}
+
+.container{
+  max-width:950px;
+  margin:30px auto;
+  padding:0 20px;
+}
+
+.lead{
+  background:white;
+  padding:25px;
+  border-radius:14px;
+  margin-bottom:30px;
+  box-shadow:0 8px 22px rgba(0,0,0,0.08);
+}
+
+.article-card{
+  background:white;
+  padding:20px;
+  margin-bottom:18px;
+  border-radius:12px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.06);
+  cursor:pointer;
+}
+.article-card:hover{
+  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+.meta{font-size:13px;color:#777;margin-bottom:8px;}
+.hidden{display:none;}
+
+.back{
+  color:#1e2a38;
+  cursor:pointer;
+  margin-bottom:15px;
+  display:inline-block;
+}
+
+#articlePage h2{
+  font-size:28px;
+  margin-bottom:10px;
+}
+#articlePage h3{
+  margin-top:30px;
+  border-left:4px solid #1e2a38;
+  padding-left:10px;
+  font-size:18px;
+}
+#articleContent{
+  line-height:1.9;
+  font-size:16px;
+  margin-top:15px;
+}
+#articleContent p{
+  margin-bottom:16px;
+}
+
+footer{
+  background:#e9edf3;
+  text-align:center;
+  padding:25px;
+  margin-top:40px;
+  font-size:13px;
+  color:#555;
+}
+</style>
 </head>
 <body>
 
-  <h1>Trendflash</h1>
+<header>
+<h1>TrendFlash</h1>
+<div id="todayDate"></div>
+<nav>
+<button onclick="filter('all')">すべて</button>
+<button onclick="filter('国際')">国際</button>
+<button onclick="filter('経済')">経済</button>
+<button onclick="filter('国内')">国内</button>
+</nav>
+</header>
 
-  <ul>
-    <li><a href="./articles/article1.html">イスラエルとイランの現在の軍事衝突状況</a></li>
-    <li><a href="./articles/article2.html">今日の記事タイトル</a></li>
-  </ul>
+<div class="container">
+<div id="home">
+
+<div class="lead">
+<h2>中東情勢の緊張続く、経済への影響拡大</h2>
+<p>
+国際情勢の緊迫化によりエネルギー市場や航空輸送に影響が広がっている。
+各国は外交的解決を模索している。
+</p>
+</div>
+
+<div id="articles"></div>
+</div>
+
+<div id="articlePage" class="hidden">
+<span class="back" onclick="goHome()">← トップへ戻る</span>
+<h2 id="articleTitle"></h2>
+<div class="meta" id="articleMeta"></div>
+<div id="articleContent"></div>
+</div>
+</div>
+
+<footer>
+© 2026 TrendFlash<br>
+本サイトは公開情報をもとに構成されています。
+</footer>
+
+<script>
+// 今日の日付表示
+const now=new Date();
+document.getElementById("todayDate").innerText=
+"本日: "+now.getFullYear()+"年"+(now.getMonth()+1)+"月"+now.getDate()+"日";
+
+// 記事データ
+const articles=[
+{
+title:"イスラエルとイランの軍事衝突が緊迫化",
+category:"国際",
+date:"2026年3月3日",
+content:[
+{heading:"緊張が高まる背景",
+paragraphs:[
+"中東地域でイスラエルとイランの対立が再び強まっている。両国は長年にわたり間接的な衝突を続けてきたが、最近では軍事的な動きが具体化している。",
+"地域の勢力バランスをめぐる争いが背景にあり、シリアやレバノンを含む広範な地域に影響が及んでいる。"
+]},
+{heading:"軍事的応酬の実態",
+paragraphs:[
+"報道では無人機の飛行や関連施設への攻撃が確認されている。公式な戦争状態ではないが、限定的な衝突が続いているとの見方が強い。",
+"双方とも安全保障上の必要性を主張し、強硬姿勢を崩していない。"
+]},
+{heading:"国際社会の対応",
+paragraphs:[
+"国連や欧米諸国は自制を求めている。偶発的な衝突が拡大すれば、地域全体の安定を損なう可能性がある。",
+"外交的解決に向けた水面下の交渉が続いているとみられる。"
+]}
+]
+},
+{
+title:"アメリカの追加制裁と原油価格への影響",
+category:"経済",
+date:"2026年3月3日",
+content:[
+{heading:"追加制裁の内容",
+paragraphs:[
+"アメリカ政府はイランに対する追加制裁を発表した。金融機関やエネルギー分野が対象とされている。",
+"外交的圧力を強めることで軍事衝突を回避する狙いがあるとみられる。"
+]},
+{heading:"市場の反応",
+paragraphs:[
+"発表直後から原油価格は変動を見せている。供給不安が高まれば価格上昇につながる。",
+"投資家は慎重姿勢を強め、市場は不安定な動きを見せている。"
+]},
+{heading:"世界経済への波及",
+paragraphs:[
+"エネルギー価格の上昇は各国経済に影響を与える可能性がある。",
+"特に輸入依存度の高い国では家計や企業活動への負担が懸念される。"
+]}
+]
+},
+{
+title:"中東情勢は全面戦争に発展するのか",
+category:"国際",
+date:"2026年3月3日",
+content:[
+{heading:"現在の局面",
+paragraphs:[
+"現時点では限定的な軍事行動にとどまっている。",
+"しかし地域の同盟関係が複雑に絡み合い、状況は流動的だ。"
+]},
+{heading:"専門家の分析",
+paragraphs:[
+"多くの専門家は全面戦争の可能性は高くないとみる。",
+"双方とも大規模衝突による損失を避けたい思惑があるためだ。"
+]},
+{heading:"今後の焦点",
+paragraphs:[
+"外交的な調整が機能するかが重要になる。",
+"偶発的なエスカレーションを防げるかどうかが鍵となる。"
+]}
+]
+}
+];
+
+let current="all";
+
+// 記事一覧表示
+function load(){
+const container=document.getElementById("articles");
+container.innerHTML="";
+articles.forEach((a,i)=>{
+if(current==="all"||a.category===current){
+container.innerHTML+=`
+<div class="article-card" onclick="openArticle(${i})">
+<div class="meta">${a.category} ｜ ${a.date}</div>
+<h3>${a.title}</h3>
+<p>${a.content.map(s=>s.paragraphs.join(" ")).join(" ").substring(0,80)}...</p>
+</div>`;
+}
+});
+}
+
+// 記事ページ表示
+function openArticle(i){
+document.getElementById("home").classList.add("hidden");
+document.getElementById("articlePage").classList.remove("hidden");
+
+document.getElementById("articleTitle").innerText=articles[i].title;
+document.getElementById("articleMeta").innerText=
+articles[i].category+" ｜ "+articles[i].date;
+
+let formatted="";
+articles[i].content.forEach(section=>{
+formatted+=`<h3>${section.heading}</h3>`;
+section.paragraphs.forEach(p=>{
+formatted+=`<p>${p}</p>`;
+});
+});
+
+document.getElementById("articleContent").innerHTML=formatted;
+}
+
+// 戻る
+function goHome(){
+document.getElementById("articlePage").classList.add("hidden");
+document.getElementById("home").classList.remove("hidden");
+}
+
+// カテゴリフィルター
+function filter(c){
+current=c;
+load();
+}
+
+// 初期表示
+load();
+</script>
 
 </body>
 </html>
