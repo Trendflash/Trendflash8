@@ -1,64 +1,145 @@
-﻿/* TrendFlash全体 */
+﻿/* 基本スタイル */
 body {
-  font-family: "Segoe UI", Arial, sans-serif;
-  background-color: #F3F3F3;
-  color: #111;
   margin: 0;
-  padding: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #f4f6f9;
+  color: #111;
 }
 
-/* ヘッダー・ファーストビュー */
-.hero {
-  background-color: #0078D7;
-  color: #fff;
-  padding: 40px 20px 20px 20px;
-  text-align: center;
-}
-.hero h1 { font-size: 2.5em; margin-bottom: 10px; }
-.hero .subtitle { font-size: 1.2em; margin-bottom: 20px; }
-
-/* 記事画像エリア */
-.articles-hero {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 20px;
-}
-.articles-hero .article { width: 140px; text-align: center; }
-.articles-hero img { width: 100%; border-radius: 5px; }
-
-/* 天気アイコン */
-.weather {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-}
-.weather img { width: 32px; height: 32px; }
-
-/* コンテナ記事一覧 */
-.container {
-  max-width: 800px;
-  margin: 20px auto;
+header {
+  background: #1e2a38;
+  color: white;
   padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  border-radius: 8px;
 }
 
-/* リンク */
-a {
-  color: #0078D7;
-  text-decoration: none;
+header h1 {
+  margin: 0;
+  font-size: 26px;
 }
-a:hover { text-decoration: underline; }
+
+nav {
+  margin-top: 10px;
+}
+
+nav button {
+  background: none;
+  border: none;
+  color: white;
+  margin-right: 15px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+nav button:hover {
+  text-decoration: underline;
+}
+
+#todayDate {
+  font-size: 12px;
+  opacity: 0.8;
+  margin-top: 5px;
+}
+
+.container {
+  max-width: 950px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+/* リード記事 */
+.lead {
+  background: white;
+  padding: 25px;
+  border-radius: 14px;
+  margin-bottom: 30px;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+}
+
+/* 記事カード一覧 */
+.article-card {
+  background: white;
+  padding: 20px;
+  margin-bottom: 18px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.article-card:hover {
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.meta {
+  font-size: 13px;
+  color: #777;
+  margin-bottom: 8px;
+}
+
+/* 記事ページ */
+.hidden {
+  display: none;
+}
+
+.back {
+  color: #1e2a38;
+  cursor: pointer;
+  margin-bottom: 15px;
+  display: inline-block;
+}
+
+#articlePage h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+#articlePage h3 {
+  margin-top: 30px;
+  border-left: 4px solid #1e2a38;
+  padding-left: 10px;
+  font-size: 18px;
+}
+
+#articleContent {
+  line-height: 1.9;
+  font-size: 16px;
+  margin-top: 15px;
+}
+
+#articleContent p {
+  margin-bottom: 16px;
+}
 
 /* フッター */
 footer {
+  background: #e9edf3;
   text-align: center;
-  padding: 10px;
+  padding: 25px;
+  margin-top: 40px;
+  font-size: 13px;
   color: #555;
-  font-size: 0.9em;
+}
+
+/* レスポンシブ対応 */
+@media screen and (max-width: 600px) {
+  header h1 {
+    font-size: 22px;
+  }
+
+  nav button {
+    font-size: 12px;
+    margin-right: 10px;
+  }
+
+  #articlePage h2 {
+    font-size: 24px;
+  }
+
+  #articlePage h3 {
+    font-size: 16px;
+  }
+
+  #articleContent {
+    font-size: 15px;
+  }
 }
