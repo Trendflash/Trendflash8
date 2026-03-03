@@ -3,58 +3,56 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TrendFlash | 最新ニュース</title>
+<title>TrendFlash</title>
 
 <style>
 body{
+  font-family: "Segoe UI", Arial, sans-serif;
+  background:#f3f3f3;
   margin:0;
-  font-family:"Segoe UI", Arial, sans-serif;
-  background:#f4f6f9;
-  color:#111;
 }
 
 .hero{
   background:#000;
-  color:#fff;
-  padding:40px 20px;
-  text-align:center;
+  color:#000;
+  padding:30px 20px;
 }
 
-.currentTime{
-  margin-top:10px;
-  font-size:14px;
-  opacity:0.8;
-}
-
-.container{
-  max-width:900px;
-  margin:30px auto;
-  padding:20px;
-}
-
-.card{
-  background:#fff;
-  margin-bottom:20px;
-  padding:20px;
-  border-radius:12px;
-  box-shadow:0 4px 12px rgba(0,0,0,0.08);
-}
-
-.card h2{
-  margin:0 0 8px 0;
+.hero h1{
+  margin:0;
+  font-size:28px;
   color:#000;
 }
 
-.card .date{
-  font-size:13px;
-  color:#666;
-  margin-bottom:10px;
+.date{
+  font-size:14px;
+  margin-top:8px;
 }
 
-.card p{
+.container{
+  max-width:800px;
+  margin:auto;
+  padding:20px;
+}
+
+.article-card{
+  background:#fff;
+  padding:20px;
+  margin-bottom:20px;
+  border-radius:8px;
+}
+
+.article-card h2{
+  margin-top:0;
+}
+
+.article-card p{
   color:#333;
-  font-size:14px;
-  line-height:1.6;
+}
+
+a{
+  text-decoration:none;
+  color:#000;
 }
 </style>
 </head>
@@ -63,90 +61,54 @@ body{
 
 <div class="hero">
   <h1>TrendFlash</h1>
-  <div class="currentTime" id="currentTime"></div>
+  <div class="date" id="currentDate"></div>
 </div>
 
-<div class="container" id="articlesContainer"></div>
+<div class="container" id="articles"></div>
 
 <script>
-
-// 🔹 現在日時を自動表示
-function updateTime(){
+function updateDate(){
   const now = new Date();
   const formatted =
     now.getFullYear() + "年" +
     (now.getMonth()+1) + "月" +
     now.getDate() + "日 " +
-    now.getHours().toString().padStart(2,"0") + ":" +
-    now.getMinutes().toString().padStart(2,"0");
-
-  document.getElementById("currentTime").textContent =
-    "更新日時：" + formatted;
+    now.getHours().toString().padStart(2,'0') + ":" +
+    now.getMinutes().toString().padStart(2,'0');
+  document.getElementById("currentDate").textContent = formatted;
 }
+updateDate();
+setInterval(updateDate,60000);
 
-updateTime();
-setInterval(updateTime, 60000); // 1分ごと更新
-
-
-// 🔹 記事一覧
-const articles = [
-  "articles/article1.html",
-  "articles/article2.html",
-  "articles/article3.html",
-  "articles/article4.html",
-  "articles/article5.html",
+const articleList = [
+  "articles/article7.html",
   "articles/article6.html",
-  "articles/article7.html"
+  "articles/article5.html",
+  "articles/article4.html",
+  "articles/article3.html",
+  "articles/article2.html",
+  "articles/article1.html"
 ];
 
-const container = document.getElementById("articlesContainer");
+articleList.forEach(url=>{
+  fetch(url)
+  .then(res=>res.text())
+  .then(data=>{
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(data,"text/html");
+    const title = doc.querySelector("h1").innerText;
+    const content = doc.querySelector("p").innerText;
+    const preview = content.substring(0,80)+"...";
 
-Promise.all(
-  articles.map(url =>
-    fetch(url)
-      .then(res => res.text())
-      .then(html => {
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(html, "text/html");
-
-        const title = doc.querySelector("h1")?.innerText || "";
-        const dateText = doc.querySelector(".date")?.innerText || "";
-        const firstParagraph = doc.querySelector("p")?.innerText || "";
-        const summary = firstParagraph.substring(0,80) + "…";
-
-        const dateMatch = dateText.match(/(\d+)年(\d+)月(\d+)日/);
-        let dateObj = new Date(0);
-        if(dateMatch){
-          dateObj = new Date(
-            dateMatch[1],
-            dateMatch[2] - 1,
-            dateMatch[3]
-          );
-        }
-
-        return { url, title, dateText, dateObj, summary };
-      })
-  )
-).then(results => {
-
-  // 新しい順
-  results.sort((a,b) => b.dateObj - a.dateObj);
-
-  results.forEach(article => {
     const card = document.createElement("div");
-    card.className = "card";
+    card.className="article-card";
     card.innerHTML = `
-      <a href="${article.url}" style="text-decoration:none;color:inherit;">
-        <h2>${article.title}</h2>
-        <div class="date">${article.dateText}</div>
-        <p>${article.summary}</p>
-      </a>
+      <h2><a href="${url}">${title}</a></h2>
+      <p>${preview}</p>
     `;
-    container.appendChild(card);
+    document.getElementById("articles").appendChild(card);
   });
-
 });
-
 </script>
 
 </body>
