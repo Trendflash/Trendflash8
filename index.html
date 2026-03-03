@@ -3,171 +3,122 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>TrendFlash | 最新ニュース・国際情勢・経済情報</title>
 <meta name="description" content="TrendFlashは国際情勢、経済、国内ニュースを分かりやすくまとめるニュースサイトです。最新情報を迅速かつ冷静にお届けします。">
+<meta name="keywords" content="ニュース, 国際情勢, 経済ニュース, 日本ニュース, 中東情勢, 原油価格">
+<meta name="robots" content="index, follow">
 
-<link rel="stylesheet" href="style.css">
+<style>
+body{
+  margin:0;
+  font-family:"Segoe UI",Arial,sans-serif;
+  background:#f4f6f9;
+  color:#111;
+}
+header{
+  background:#1e2a38;
+  color:white;
+  padding:20px;
+}
+header h1{
+  margin:0;
+  font-size:26px;
+}
+nav{
+  margin-top:10px;
+}
+nav button{
+  background:none;
+  border:none;
+  color:white;
+  margin-right:15px;
+  font-size:14px;
+  cursor:pointer;
+}
+nav button:hover{
+  text-decoration:underline;
+}
+#todayDate{
+  font-size:12px;
+  opacity:0.8;
+  margin-top:5px;
+}
+.container{
+  max-width:950px;
+  margin:30px auto;
+  padding:0 20px;
+}
+.article-card{
+  background:white;
+  padding:20px;
+  margin-bottom:18px;
+  border-radius:12px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.06);
+  cursor:pointer;
+}
+.article-card:hover{
+  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+.meta{
+  font-size:13px;
+  color:#777;
+  margin-bottom:8px;
+}
+.back{
+  color:#1e2a38;
+  cursor:pointer;
+  margin-bottom:15px;
+  display:inline-block;
+}
+footer{
+  background:#e9edf3;
+  text-align:center;
+  padding:25px;
+  margin-top:40px;
+  font-size:13px;
+  color:#555;
+}
+</style>
 </head>
 <body>
 
 <header>
 <h1>TrendFlash</h1>
 <div id="todayDate"></div>
-<nav>
-<button onclick="filter('all')">すべて</button>
-<button onclick="filter('国際')">国際</button>
-<button onclick="filter('経済')">経済</button>
-<button onclick="filter('国内')">国内</button>
-</nav>
 </header>
 
-<div class="container">
-<div id="home">
-<div id="articles"></div>
-</div>
-
-<div id="articlePage" class="hidden">
-<span class="back" onclick="goHome()">← トップへ戻る</span>
-<h2 id="articleTitle"></h2>
-<div class="meta" id="articleMeta"></div>
-<div id="articleContent"></div>
-</div>
+<div class="container" id="articlesContainer">
+  <!-- 記事カードをここに挿入 -->
 </div>
 
 <footer>
-© 2026 TrendFlash<br>
-本サイトは公開情報をもとに構成されています。
+© 2026 TrendFlash  
+<br>本サイトは公開情報をもとに構成されています。
 </footer>
 
 <script>
-// 今日の日付表示
-const now=new Date();
-document.getElementById("todayDate").innerText=
-"本日: "+now.getFullYear()+"年"+(now.getMonth()+1)+"月"+now.getDate()+"日";
+const today = new Date();
+document.getElementById("todayDate").innerText =
+  "本日: " + today.getFullYear() + "年" + (today.getMonth()+1) + "月" + today.getDate() + "日";
 
-// 記事データ
-const articles=[
-{
-title:"イスラエルとイランの軍事衝突が緊迫化",
-category:"国際",
-date:"2026年3月3日",
-content:[
-{heading:"緊張が高まる背景",
-paragraphs:[
-"中東地域でイスラエルとイランの対立が再び強まっている。両国は長年にわたり間接的な衝突を続けてきたが、最近では軍事的な動きが具体化している。",
-"地域の勢力バランスをめぐる争いが背景にあり、シリアやレバノンを含む広範な地域に影響が及んでいる。"
-]},
-{heading:"軍事的応酬の実態",
-paragraphs:[
-"報道では無人機の飛行や関連施設への攻撃が確認されている。公式な戦争状態ではないが、限定的な衝突が続いているとの見方が強い。",
-"双方とも安全保障上の必要性を主張し、強硬姿勢を崩していない。"
-]},
-{heading:"国際社会の対応",
-paragraphs:[
-"国連や欧米諸国は自制を求めている。偶発的な衝突が拡大すれば、地域全体の安定を損なう可能性がある。",
-"外交的解決に向けた水面下の交渉が続いているとみられる。"
-]}
-]
-},
-{
-title:"アメリカの追加制裁と原油価格への影響",
-category:"経済",
-date:"2026年3月3日",
-content:[
-{heading:"追加制裁の内容",
-paragraphs:[
-"アメリカ政府はイランに対する追加制裁を発表した。金融機関やエネルギー分野が対象とされている。",
-"外交的圧力を強めることで軍事衝突を回避する狙いがあるとみられる。"
-]},
-{heading:"市場の反応",
-paragraphs:[
-"発表直後から原油価格は変動を見せている。供給不安が高まれば価格上昇につながる。",
-"投資家は慎重姿勢を強め、市場は不安定な動きを見せている。"
-]},
-{heading:"世界経済への波及",
-paragraphs:[
-"エネルギー価格の上昇は各国経済に影響を与える可能性がある。",
-"特に輸入依存度の高い国では家計や企業活動への負担が懸念される。"
-]}
-]
-},
-{
-title:"中東情勢は全面戦争に発展するのか",
-category:"国際",
-date:"2026年3月3日",
-content:[
-{heading:"現在の局面",
-paragraphs:[
-"現時点では限定的な軍事行動にとどまっている。",
-"しかし地域の同盟関係が複雑に絡み合い、状況は流動的だ。"
-]},
-{heading:"専門家の分析",
-paragraphs:[
-"多くの専門家は全面戦争の可能性は高くないとみる。",
-"双方とも大規模衝突による損失を避けたい思惑があるためだ。"
-]},
-{heading:"今後の焦点",
-paragraphs:[
-"外交的な調整が機能するかが重要になる。",
-"偶発的なエスカレーションを防げるかどうかが鍵となる。"
-]}
-]
-}
+// 記事情報
+const articles = [
+  {file:"article1.html", title:"イスラエルとイランの緊張再燃　中東情勢は新たな局面へ", category:"国際", date:"2026年3月3日"},
+  {file:"article2.html", title:"中東情勢の緊張で原油価格が変動　家計への影響は", category:"経済", date:"2026年3月3日"},
+  {file:"article3.html", title:"教育現場で広がるAI活用　学習スタイルはどう変わるか", category:"国内", date:"2026年3月3日"},
+  {file:"article4.html", title:"最新テクノロジーが企業戦略に与える影響", category:"経済", date:"2026年3月3日"},
+  {file:"article5.html", title:"国際的な気候変動対策の進展と課題", category:"国際", date:"2026年3月3日"},
+  {file:"article6.html", title:"日本国内の交通インフラ改善の現状と今後", category:"国内", date:"2026年3月3日"}
 ];
 
-let current="all";
-
-// 記事一覧表示
-function load(){
-const container=document.getElementById("articles");
-container.innerHTML="";
-articles.forEach((a,i)=>{
-if(current==="all"||a.category===current){
-container.innerHTML+=`
-<div class="article-card" onclick="openArticle(${i})">
-<div class="meta">${a.category} ｜ ${a.date}</div>
-<h3>${a.title}</h3>
-<p>${a.content.map(s=>s.paragraphs.join(" ")).join(" ").substring(0,80)}...</p>
-</div>`;
-}
+const container = document.getElementById("articlesContainer");
+articles.forEach(a=>{
+  const div = document.createElement("div");
+  div.className = "article-card";
+  div.onclick = ()=>{ location.href="./articles/"+a.file; };
+  div.innerHTML = `<div class="meta">${a.category} ｜ ${a.date}</div><h3>${a.title}</h3>`;
+  container.appendChild(div);
 });
-}
-
-// 記事ページ表示
-function openArticle(i){
-document.getElementById("home").classList.add("hidden");
-document.getElementById("articlePage").classList.remove("hidden");
-
-document.getElementById("articleTitle").innerText=articles[i].title;
-document.getElementById("articleMeta").innerText=
-articles[i].category+" ｜ "+articles[i].date;
-
-let formatted="";
-articles[i].content.forEach(section=>{
-formatted+=`<h3>${section.heading}</h3>`;
-section.paragraphs.forEach(p=>{
-formatted+=`<p>${p}</p>`;
-});
-});
-
-document.getElementById("articleContent").innerHTML=formatted;
-}
-
-// 戻る
-function goHome(){
-document.getElementById("articlePage").classList.add("hidden");
-document.getElementById("home").classList.remove("hidden");
-}
-
-// カテゴリフィルター
-function filter(c){
-current=c;
-load();
-}
-
-// 初期表示
-load();
 </script>
 
 </body>
