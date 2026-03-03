@@ -7,26 +7,29 @@
 
 <style>
 body{
-  font-family: "Segoe UI", Arial, sans-serif;
+  font-family:"Segoe UI",Arial,sans-serif;
   background:#f3f3f3;
   margin:0;
 }
 
+/* 黒ヘッダー復活 */
 .hero{
   background:#000;
-  color:#000;
-  padding:30px 20px;
+  color:#fff;
+  padding:60px 20px;   /* ← バーを大きく */
+  text-align:center;   /* ← 真ん中配置 */
 }
 
 .hero h1{
   margin:0;
-  font-size:28px;
-  color:#000;
+  font-size:48px;      /* ← 大きく */
+  letter-spacing:2px;
 }
 
 .date{
-  font-size:14px;
-  margin-top:8px;
+  margin-top:15px;
+  font-size:18px;
+  color:#ccc;
 }
 
 .container{
@@ -40,19 +43,6 @@ body{
   padding:20px;
   margin-bottom:20px;
   border-radius:8px;
-}
-
-.article-card h2{
-  margin-top:0;
-}
-
-.article-card p{
-  color:#333;
-}
-
-a{
-  text-decoration:none;
-  color:#000;
 }
 </style>
 </head>
@@ -74,41 +64,12 @@ function updateDate(){
     (now.getMonth()+1) + "月" +
     now.getDate() + "日 " +
     now.getHours().toString().padStart(2,'0') + ":" +
-    now.getMinutes().toString().padStart(2,'0');
+    now.getMinutes().toString().padStart(2,'0') + ":" +
+    now.getSeconds().toString().padStart(2,'0');  // ← 秒追加
   document.getElementById("currentDate").textContent = formatted;
 }
 updateDate();
-setInterval(updateDate,60000);
-
-const articleList = [
-  "articles/article7.html",
-  "articles/article6.html",
-  "articles/article5.html",
-  "articles/article4.html",
-  "articles/article3.html",
-  "articles/article2.html",
-  "articles/article1.html"
-];
-
-articleList.forEach(url=>{
-  fetch(url)
-  .then(res=>res.text())
-  .then(data=>{
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(data,"text/html");
-    const title = doc.querySelector("h1").innerText;
-    const content = doc.querySelector("p").innerText;
-    const preview = content.substring(0,80)+"...";
-
-    const card = document.createElement("div");
-    card.className="article-card";
-    card.innerHTML = `
-      <h2><a href="${url}">${title}</a></h2>
-      <p>${preview}</p>
-    `;
-    document.getElementById("articles").appendChild(card);
-  });
-});
+setInterval(updateDate,1000);  // ← 1秒ごと更新
 </script>
 
 </body>
