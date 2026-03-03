@@ -3,26 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TrendFlash | 最新ニュース一覧</title>
-<meta name="description" content="TrendFlashの最新ニュース一覧ページ">
+<title>TrendFlash | 最新ニュース</title>
 
 <style>
 body{
   margin:0;
   font-family:"Segoe UI", Arial, sans-serif;
   background:#f4f6f9;
+  color:#111;
 }
 
 .hero{
-  background:#007acc;
+  background:#000;
   color:#fff;
   padding:40px 20px;
   text-align:center;
 }
 
-.hero h1{
-  margin:0;
-  font-size:30px;
+.currentTime{
+  margin-top:10px;
+  font-size:14px;
+  opacity:0.8;
 }
 
 .container{
@@ -37,27 +38,23 @@ body{
   padding:20px;
   border-radius:12px;
   box-shadow:0 4px 12px rgba(0,0,0,0.08);
-  transition:0.2s;
-}
-
-.card:hover{
-  transform:translateY(-4px);
 }
 
 .card h2{
-  margin:0 0 10px 0;
-  color:#007acc;
+  margin:0 0 8px 0;
+  color:#000;
+}
+
+.card .date{
+  font-size:13px;
+  color:#666;
+  margin-bottom:10px;
 }
 
 .card p{
-  color:#555;
+  color:#333;
   font-size:14px;
-}
-
-.card a{
-  text-decoration:none;
-  color:inherit;
-  display:block;
+  line-height:1.6;
 }
 </style>
 </head>
@@ -65,68 +62,92 @@ body{
 <body>
 
 <div class="hero">
-  <h1>TrendFlash 最新ニュース</h1>
+  <h1>TrendFlash</h1>
+  <div class="currentTime" id="currentTime"></div>
 </div>
 
-<div class="container">
+<div class="container" id="articlesContainer"></div>
 
-  <!-- article7（今くれたやつ） -->
-  <div class="card">
-    <a href="articles/article7.html">
-      <h2>イスラエル・レバノン衝突速報｜発端・被害・国際反応まとめ</h2>
-      <p>2026年3月3日</p>
-    </a>
-  </div>
+<script>
 
-  <!-- article6 -->
-  <div class="card">
-    <a href="articles/article6.html">
-      <h2>（article6のh1をここに入れる）</h2>
-      <p>日付</p>
-    </a>
-  </div>
+// 🔹 現在日時を自動表示
+function updateTime(){
+  const now = new Date();
+  const formatted =
+    now.getFullYear() + "年" +
+    (now.getMonth()+1) + "月" +
+    now.getDate() + "日 " +
+    now.getHours().toString().padStart(2,"0") + ":" +
+    now.getMinutes().toString().padStart(2,"0");
 
-  <!-- article5 -->
-  <div class="card">
-    <a href="articles/article5.html">
-      <h2>（article5のh1をここに入れる）</h2>
-      <p>日付</p>
-    </a>
-  </div>
+  document.getElementById("currentTime").textContent =
+    "更新日時：" + formatted;
+}
 
-  <!-- article4 -->
-  <div class="card">
-    <a href="articles/article4.html">
-      <h2>（article4のh1をここに入れる）</h2>
-      <p>日付</p>
-    </a>
-  </div>
+updateTime();
+setInterval(updateTime, 60000); // 1分ごと更新
 
-  <!-- article3 -->
-  <div class="card">
-    <a href="articles/article3.html">
-      <h2>（article3のh1をここに入れる）</h2>
-      <p>日付</p>
-    </a>
-  </div>
 
-  <!-- article2 -->
-  <div class="card">
-    <a href="articles/article2.html">
-      <h2>（article2のh1をここに入れる）</h2>
-      <p>日付</p>
-    </a>
-  </div>
+// 🔹 記事一覧
+const articles = [
+  "articles/article1.html",
+  "articles/article2.html",
+  "articles/article3.html",
+  "articles/article4.html",
+  "articles/article5.html",
+  "articles/article6.html",
+  "articles/article7.html"
+];
 
-  <!-- article1 -->
-  <div class="card">
-    <a href="articles/article1.html">
-      <h2>（article1のh1をここに入れる）</h2>
-      <p>日付</p>
-    </a>
-  </div>
+const container = document.getElementById("articlesContainer");
 
-</div>
+Promise.all(
+  articles.map(url =>
+    fetch(url)
+      .then(res => res.text())
+      .then(html => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, "text/html");
+
+        const title = doc.querySelector("h1")?.innerText || "";
+        const dateText = doc.querySelector(".date")?.innerText || "";
+        const firstParagraph = doc.querySelector("p")?.innerText || "";
+        const summary = firstParagraph.substring(0,80) + "…";
+
+        const dateMatch = dateText.match(/(\d+)年(\d+)月(\d+)日/);
+        let dateObj = new Date(0);
+        if(dateMatch){
+          dateObj = new Date(
+            dateMatch[1],
+            dateMatch[2] - 1,
+            dateMatch[3]
+          );
+        }
+
+        return { url, title, dateText, dateObj, summary };
+      })
+  )
+).then(results => {
+
+  // 新しい順
+  results.sort((a,b) => b.dateObj - a.dateObj);
+
+  results.forEach(article => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+      <a href="${article.url}" style="text-decoration:none;color:inherit;">
+        <h2>${article.title}</h2>
+        <div class="date">${article.dateText}</div>
+        <p>${article.summary}</p>
+      </a>
+    `;
+    container.appendChild(card);
+  });
+
+});
+
+</script>
 
 </body>
 </html>
