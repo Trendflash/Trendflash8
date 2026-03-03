@@ -12,22 +12,22 @@ body{
   margin:0;
 }
 
-/* 黒ヘッダー復活 */
+/* 黒ヘッダー */
 .hero{
   background:#000;
   color:#fff;
-  padding:60px 20px;   /* ← バーを大きく */
-  text-align:center;   /* ← 真ん中配置 */
+  padding:45px 20px;
+  text-align:center;
 }
 
 .hero h1{
   margin:0;
-  font-size:48px;      /* ← 大きく */
+  font-size:48px;
   letter-spacing:2px;
 }
 
 .date{
-  margin-top:15px;
+  margin-top:10px;
   font-size:18px;
   color:#ccc;
 }
@@ -42,7 +42,25 @@ body{
   background:#fff;
   padding:20px;
   margin-bottom:20px;
-  border-radius:8px;
+  border-radius:10px;
+  transition:0.2s;
+}
+
+.article-card:hover{
+  transform:translateY(-3px);
+}
+
+.article-card h2{
+  margin-top:0;
+}
+
+.article-card a{
+  text-decoration:none;
+  color:#000;
+}
+
+.article-card p{
+  color:#444;
 }
 </style>
 </head>
@@ -57,6 +75,7 @@ body{
 <div class="container" id="articles"></div>
 
 <script>
+/* 日付・時刻（秒まで） */
 function updateDate(){
   const now = new Date();
   const formatted =
@@ -65,11 +84,55 @@ function updateDate(){
     now.getDate() + "日 " +
     now.getHours().toString().padStart(2,'0') + ":" +
     now.getMinutes().toString().padStart(2,'0') + ":" +
-    now.getSeconds().toString().padStart(2,'0');  // ← 秒追加
+    now.getSeconds().toString().padStart(2,'0');
   document.getElementById("currentDate").textContent = formatted;
 }
 updateDate();
-setInterval(updateDate,1000);  // ← 1秒ごと更新
+setInterval(updateDate,1000);
+
+
+/* 新しい順 */
+const articleList = [
+  "articles/article7.html",
+  "articles/article6.html",
+  "articles/article5.html",
+  "articles/article4.html",
+  "articles/article3.html",
+  "articles/article2.html",
+  "articles/article1.html"
+];
+
+/* 記事読み込み */
+articleList.forEach(url=>{
+  fetch(url)
+  .then(res=>res.text())
+  .then(data=>{
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(data,"text/html");
+
+    const title = doc.querySelector("h1")
+      ? doc.querySelector("h1").innerText
+      : "タイトル未取得";
+
+    const content = doc.querySelector("p")
+      ? doc.querySelector("p").innerText
+      : "";
+
+    /* 約80文字で自然に切る */
+    let preview = content.slice(0,80);
+    if(content.length > 80){
+      preview += "...";
+    }
+
+    const card = document.createElement("div");
+    card.className="article-card";
+    card.innerHTML = `
+      <h2><a href="${url}">${title}</a></h2>
+      <p>${preview}</p>
+    `;
+    document.getElementById("articles").appendChild(card);
+  });
+});
 </script>
 
 </body>
