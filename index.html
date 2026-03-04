@@ -3,7 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TrendFlash</title>
+
+<title>TrendFlash | 最新ニュースまとめ</title>
+<meta name="description" content="中東情勢・AI・テクノロジー・経済・気候変動など最新ニュースを分かりやすく解説。TrendFlash公式サイト。">
+<meta name="keywords" content="中東情勢, AI, 教育AI, テクノロジー, 世界経済, 気候変動, ニュース">
+<meta name="robots" content="index, follow">
+
+<!-- OGP（SNS拡散強化） -->
+<meta property="og:title" content="TrendFlash | 最新ニュースまとめ">
+<meta property="og:description" content="中東情勢・AI・経済など話題ニュースを分かりやすく解説">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://あなたのURL.github.io/">
+<meta property="og:image" content="https://あなたのURL.github.io/ogp.jpg">
 
 <style>
 body{
@@ -62,6 +73,18 @@ body{
 .article-card p{
   color:#444;
 }
+
+/* 共有ボタン */
+.share{
+  margin-top:10px;
+}
+
+.share a{
+  font-size:14px;
+  margin-right:10px;
+  text-decoration:none;
+  color:#0078D7;
+}
 </style>
 </head>
 
@@ -89,7 +112,6 @@ function updateDate(){
 }
 updateDate();
 setInterval(updateDate,1000);
-
 
 /* 新しい順 */
 const articleList = [
@@ -123,17 +145,23 @@ articleList.forEach(url=>{
       ? doc.querySelector("p").innerText
       : "";
 
-    /* 約80文字で自然に切る */
     let preview = content.slice(0,80);
     if(content.length > 80){
       preview += "...";
     }
+
+    const currentUrl = window.location.origin + "/" + url;
 
     const card = document.createElement("div");
     card.className="article-card";
     card.innerHTML = `
       <h2><a href="${url}">${title}</a></h2>
       <p>${preview}</p>
+
+      <div class="share">
+        <a href="https://twitter.com/intent/tweet?text=${title}&url=${currentUrl}" target="_blank">Xで共有</a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=${currentUrl}" target="_blank">Facebook</a>
+      </div>
     `;
     document.getElementById("articles").appendChild(card);
   });
