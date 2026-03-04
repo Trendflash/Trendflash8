@@ -143,3 +143,92 @@ footer {
     font-size: 15px;
   }
 }
+/* ===== TrendFlash 記事一覧 CSSのみ強化 ===== */
+
+body {
+  max-width: 950px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #f4f6f9;
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #111;
+  line-height: 1.7;
+}
+
+h1 {
+  margin: 40px 0 30px 0;
+  font-size: 32px;
+  border-left: 6px solid #0078D7;
+  padding-left: 15px;
+}
+
+/* リスト初期化 */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* 記事カード */
+ul li {
+  background: white;
+  padding: 24px 22px;
+  margin-bottom: 20px;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* 浮き上がり演出 */
+ul li:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.12);
+}
+
+/* 記事タイトル */
+ul li a {
+  text-decoration: none;
+  color: #111;
+  font-weight: bold;
+  font-size: 18px;
+  display: block;
+}
+
+ul li a:hover {
+  color: #0078D7;
+}
+
+/* 自動カテゴリ風ラベル（疑似要素） */
+ul li::before {
+  content: "NEWS";
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  background: #0078D7;
+  color: white;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+/* ===== モバイル最適化 ===== */
+@media (max-width: 600px) {
+
+  body {
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  ul li {
+    padding: 20px;
+  }
+
+  ul li a {
+    font-size: 16px;
+  }
+
+}
