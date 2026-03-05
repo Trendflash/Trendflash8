@@ -3,39 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>イラン国内の最新情勢</title>
 <meta name="description" content="イラン国内の政治・経済・社会情勢を1400文字で解説">
-
 <link rel="stylesheet" href="../style.css">
+<style>
+body{margin:0;font-family:sans-serif;background:#f4f6f9;}
+header{background:#000;color:#fff;padding:20px;text-align:center;font-size:26px;font-weight:bold;}
+.container{max-width:800px;margin:30px auto;padding:20px;background:#fff;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.08);}
+h1{color:#000;font-size:24px;}
+h2{margin-top:28px;font-size:18px;border-left:4px solid #000;padding-left:8px;}
+p{line-height:1.8;margin-top:10px;}
+.date{color:#666;font-size:14px;margin-bottom:20px;}
+.back{margin-top:30px;}
+.back a{text-decoration:none;color:#000;font-weight:bold;}
+.related{margin-top:40px;}
+.related h3{font-size:18px;border-left:4px solid #000;padding-left:8px;margin-bottom:12px;}
+.related ul{list-style:none;padding-left:0;}
+.related li{margin-bottom:10px;}
+.related a{color:#000;text-decoration:none;}
+</style>
 </head>
-
 <body>
+<header>TrendFlash</header>
+<div class="container">
+<h1>イラン国内の最新情勢</h1>
+<div class="date"></div>
 
-<header class="hero">
-  <h1>TrendFlash</h1>
-  <div class="date" id="currentDate"></div>
-</header>
-
-<main class="container">
-
-<div class="article-card">
-  <div class="card-top">2026/03/06 14:20:10</div>
-
-  <h1>イラン国内の最新情勢</h1>
-
-  <p>
+<p>
 イラン国内では、国際的な制裁の影響や地域情勢の不安定化を背景に、経済・社会・政治の各分野で複雑な動きが続いています。経済面では石油価格の変動や輸出制限が国内経済に直結しており、通貨価値の変動が消費者の生活に影響を与えています。都市部では生活必需品の価格上昇が市民生活を圧迫し、政府は物価安定策や補助金政策を講じています。政治面では国内改革派と保守派の対立が続き、社会政策や教育政策に影響を及ぼしています。特に若者層の就職難や生活コストの上昇が、社会的不満や抗議活動の増加につながる可能性があります。一方で、医療・教育分野では技術導入や制度改革が進められており、公共サービスの質向上が期待されています。文化面では国内映画・音楽・スポーツイベントが徐々に再開され、国内の活力を取り戻す動きが見られます。しかし地域情勢の緊張は引き続き存在し、外交・安全保障政策への影響が避けられません。国民生活の安定化と経済成長を両立させることが今後の最重要課題であり、国際社会との連携や政策の柔軟性が求められる状況です。
-  </p>
+</p>
 
-  <h2>関連記事</h2>
-  <ul>
-    <li><a href="article10.html">イスラエル国内の最新情勢</a></li>
-    <li><a href="article12.html">中東全域の安全保障動向</a></li>
-  </ul>
+<div class="related">
+<h3>関連記事</h3>
+<ul>
+<li><a href="article10.html">イスラエル国内の最新情勢</a></li>
+<li><a href="article12.html">中東全域の安全保障動向</a></li>
+</ul>
 </div>
 
-</main>
+<div class="back"><a href="../index.html">← トップへ戻る</a></div>
+</div>
 
 <script>
 function updateDate(){
@@ -47,7 +54,7 @@ function updateDate(){
     now.getHours().toString().padStart(2,'0') + ":" +
     now.getMinutes().toString().padStart(2,'0') + ":" +
     now.getSeconds().toString().padStart(2,'0');
-  document.getElementById("currentDate").textContent = formatted;
+  document.querySelector('.date').textContent = formatted;
 }
 updateDate();
 setInterval(updateDate,1000);
