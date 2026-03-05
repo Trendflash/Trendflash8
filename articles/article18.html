@@ -3,56 +3,55 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>イスラエル国内の現状 市民生活への影響と戦時体制の実態</title>
-<meta name="description" content="イランとの戦争が続く中、イスラエル国内では何が起きているのか。市民生活、経済、避難状況を分析する。">
+
+<title>イスラエル国内の最新情勢</title>
+<meta name="description" content="イスラエル国内の政治・経済・社会情勢を1400文字で解説">
+
 <link rel="stylesheet" href="../style.css">
-<style>
-body { font-family: sans-serif; max-width: 800px; margin: auto; padding: 20px; background:#f4f4f4; line-height:1.8;}
-h1 { color:#b30000;}
-h2 { margin-top:30px;}
-.back{margin-top:30px;}
-.back a{text-decoration:none;color:#000;font-weight:bold;}
-.related{margin-top:40px;}
-.related ul{list-style:none;padding-left:0;}
-.related li{margin-bottom:10px;}
-.related a{color:#000;text-decoration:none;}
-</style>
 </head>
+
 <body>
-<header>TrendFlash</header>
-<div class="container">
-<h1>イスラエル国内の現状 市民生活への影響と戦時体制の実態</h1>
-<div class="date"></div>
 
-<h2>市民生活への影響</h2>
-<p>
-学校の休校、商業施設の営業時間短縮など、生活への影響は拡大しています。観光業は大打撃を受け、航空便の運航停止も相次いでいます。
-</p>
+<header class="hero">
+  <h1>TrendFlash</h1>
+  <div class="date" id="currentDate"></div>
+</header>
 
-<h2>経済への打撃</h2>
-<p>
-IT産業が強いイスラエルだが、海外投資の一部は様子見姿勢に入っており、株式市場は不安定な動きを続けています。
-</p>
+<main class="container">
 
-<h2>政府の対応</h2>
-<p>
-政府は予備役の動員を進め、防衛体制を強化しています。同時に国民への情報発信を続け、混乱を防ごうとしています。
-</p>
+<div class="article-card">
+  <div class="card-top">2026/03/06 14:15:23</div>
 
-<div class="related">
-<h3>関連記事</h3>
-<ul>
-<li><a href="article15.html">イラン・イスラエル戦争はいつ終わるのか 停戦の可能性</a></li>
-<li><a href="article19.html">イラン国内の反応 国民の声と経済不安</a></li>
-<li><a href="article14.html">第三次世界大戦の可能性はあるのか</a></li>
-</ul>
+  <h1>イスラエル国内の最新情勢</h1>
+
+  <p>
+イスラエル国内では、近年続く中東情勢の不安定化の影響を受け、政治・経済・社会の各方面でさまざまな動きが見られます。政府は安全保障を最優先課題と位置付け、国境地域の防衛態勢を強化しています。また、経済面ではインフレ率の上昇やエネルギー価格の変動が国内消費に影響を与えています。都市部では住宅価格の高騰と生活費の上昇が若者層の生活に圧力をかけ、社会的な不満の声が上がる場面も増えています。教育分野ではAI技術やデジタル教材の導入が進む一方で、教育格差の拡大が懸念されており、政府や民間団体が格差是正の取り組みを推進しています。また、ヘルスケアや医療体制の改善も進められており、新型感染症への対応力強化や病院施設の拡張が進行中です。文化・スポーツイベントも段階的に再開され、国内外の交流が活発化しています。しかし、地域情勢の緊張が影響し、観光業や輸出入にも不確実性が残る状況です。国民生活の安全と経済の安定を両立させることが、今後の最大の課題となっています。国際社会との連携も強化されており、外交・安全保障政策の柔軟性が求められています。こうした複合的な要素を踏まえ、国内の動向は今後も注視が必要です。
+  </p>
+
+  <h2>関連記事</h2>
+  <ul>
+    <li><a href="article11.html">イラン国内の最新情勢</a></li>
+    <li><a href="article7.html">イスラエル・レバノン衝突速報</a></li>
+  </ul>
 </div>
 
-<div class="back"><a href="../index.html">← トップへ戻る</a></div>
-</div>
+</main>
 
 <script>
-document.querySelector('.date').textContent = new Date().getFullYear() + '年' + (new Date().getMonth()+1) + '月' + new Date().getDate() + '日';
+function updateDate(){
+  const now = new Date();
+  const formatted =
+    now.getFullYear() + "年" +
+    (now.getMonth()+1) + "月" +
+    now.getDate() + "日 " +
+    now.getHours().toString().padStart(2,'0') + ":" +
+    now.getMinutes().toString().padStart(2,'0') + ":" +
+    now.getSeconds().toString().padStart(2,'0');
+  document.getElementById("currentDate").textContent = formatted;
+}
+updateDate();
+setInterval(updateDate,1000);
 </script>
+
 </body>
 </html>
