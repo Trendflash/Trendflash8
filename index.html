@@ -5,12 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>TrendFlash | 最新ニュースまとめ</title>
-
 <meta name="description" content="中東情勢・AI・テクノロジー・経済・気候変動など最新ニュースを分かりやすく解説。TrendFlash公式サイト。">
 <meta name="keywords" content="中東情勢, AI, 教育AI, テクノロジー, 世界経済, 気候変動, ニュース">
 <meta name="robots" content="index, follow">
 
-<!-- OGP -->
 <meta property="og:title" content="TrendFlash | 最新ニュースまとめ">
 <meta property="og:description" content="中東情勢・AI・経済など話題ニュースを分かりやすく解説">
 <meta property="og:type" content="website">
@@ -18,80 +16,7 @@
 <meta property="og:image" content="https://trendflash.github.io/Trendflash8/ogp.jpg">
 
 <link rel="stylesheet" href="style.css">
-
-<style>
-
-/* ヒーローヘッダー */
-.hero{
-  background:#000;
-  color:#fff;
-  padding:45px 20px;
-  text-align:center;
-}
-
-.hero h1{
-  margin:0;
-  font-size:48px;
-  letter-spacing:2px;
-}
-
-.date{
-  margin-top:10px;
-  font-size:18px;
-  color:#ccc;
-}
-
-.container{
-  max-width:800px;
-  margin:auto;
-  padding:20px;
-}
-
-/* 記事カード */
-.article-card{
-  background:#fff;
-  padding:22px;
-  margin-bottom:20px;
-  border-radius:12px;
-  transition:0.25s;
-  box-shadow:0 6px 18px rgba(0,0,0,0.06);
-}
-
-.article-card:hover{
-  transform:translateY(-4px);
-  box-shadow:0 12px 26px rgba(0,0,0,0.12);
-}
-
-.article-card h2{
-  margin-top:0;
-  font-size:22px;
-}
-
-.article-card a{
-  text-decoration:none;
-  color:#111;
-}
-
-.article-card p{
-  color:#444;
-  margin-top:8px;
-}
-
-/* 共有 */
-.share{
-  margin-top:10px;
-}
-
-.share a{
-  font-size:14px;
-  margin-right:10px;
-  text-decoration:none;
-  color:#0078D7;
-}
-
-</style>
 </head>
-
 <body>
 
 <div class="hero">
@@ -101,9 +26,10 @@
 
 <div class="container" id="articles"></div>
 
-<script>
+<button id="downloadSitemap">sitemap.xml をダウンロード</button>
 
-/* 日付表示 */
+<script>
+// 日付表示
 function updateDate(){
   const now = new Date();
   const formatted =
@@ -113,99 +39,58 @@ function updateDate(){
     now.getHours().toString().padStart(2,'0') + ":" +
     now.getMinutes().toString().padStart(2,'0') + ":" +
     now.getSeconds().toString().padStart(2,'0');
-
   document.getElementById("currentDate").textContent = formatted;
 }
-
 updateDate();
 setInterval(updateDate,1000);
 
-
-/* 新しい順 */
-const articleList = [
-"articles/article19.html",
-"articles/article18.html",
-"articles/article17.html",
-"articles/article16.html",
-"articles/article15.html",
-"articles/article14.html",
-"articles/article13.html",
-"articles/article12.html",
-"articles/article11.html",
-"articles/article10.html",
-"articles/article9.html",
-"articles/article8.html",
-"articles/article7.html",
-"articles/article6.html",
-"articles/article5.html",
-"articles/article4.html",
-"articles/article3.html",
-"articles/article2.html",
-"articles/article1.html"
-];
-
-
-/* 記事読み込み */
-async function loadArticles(){
-
-for(const url of articleList){
-
-try{
-
-const res = await fetch(url);
-
-if(!res.ok) continue;
-
-const html = await res.text();
-
-const parser = new DOMParser();
-const doc = parser.parseFromString(html,"text/html");
-
-const title =
-doc.querySelector("h1")?.innerText || "タイトル未取得";
-
-const firstP =
-doc.querySelector("p")?.innerText || "";
-
-let preview = firstP.substring(0,80);
-
-if(firstP.length > 80){
-preview += "...";
+// 記事リスト自動取得（1〜19）
+const articleList = [];
+for(let i=1;i<=19;i++){
+  articleList.push(`articles/article${i}.html`);
 }
+articleList.reverse();
 
-const currentUrl =
-window.location.origin +
-window.location.pathname.replace("index.html","") +
-url;
+// 記事カード生成
+const articlesDiv = document.getElementById("articles");
+articleList.forEach(url=>{
+  fetch(url)
+    .then(res=>res.text())
+    .then(data=>{
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(data,"text/html");
+      const title = doc.querySelector("h1") ? doc.querySelector("h1").innerText : "タイトル未取得";
+      const content = doc.querySelector("p") ? doc.querySelector("p").innerText : "";
+      let preview = content.slice(0,80) + (content.length>80 ? "..." : "");
+      const currentUrl = window.location.origin + "/" + url;
+      const card = document.createElement("div");
+      card.className="article-card";
+      card.innerHTML = `
+        <h2><a href="${url}">${title}</a></h2>
+        <p>${preview}</p>
+        <div class="share">
+          <a href="https://twitter.com/intent/tweet?text=${title}&url=${currentUrl}" target="_blank">Xで共有</a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=${currentUrl}" target="_blank">Facebook</a>
+        </div>
+      `;
+      articlesDiv.appendChild(card);
+    });
+});
 
-const card = document.createElement("div");
-
-card.className="article-card";
-
-card.innerHTML = `
-<h2><a href="${url}">${title}</a></h2>
-<p>${preview}</p>
-
-<div class="share">
-<a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(currentUrl)}" target="_blank">Xで共有</a>
-<a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}" target="_blank">Facebook</a>
-</div>
-`;
-
-document.getElementById("articles").appendChild(card);
-
-}catch(e){
-
-console.warn("記事読み込み失敗:",url);
-
-}
-
-}
-
-}
-
-loadArticles();
-
+// sitemap.xml 自動生成 + ダウンロード
+document.getElementById("downloadSitemap").addEventListener("click",()=>{
+  let sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+  sitemap += `  <url>\n    <loc>https://trendflash.github.io/Trendflash8/</loc>\n    <priority>1.0</priority>\n  </url>\n`;
+  articleList.forEach(url=>{
+    sitemap += `  <url>\n    <loc>https://trendflash.github.io/Trendflash8/${url}</loc>\n    <priority>0.8</priority>\n  </url>\n`;
+  });
+  sitemap += `</urlset>`;
+  const blob = new Blob([sitemap], {type:"application/xml"});
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = "sitemap.xml";
+  link.click();
+});
 </script>
 
 </body>

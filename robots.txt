@@ -1,0 +1,4 @@
+﻿User-agent: *
+Disallow:
+
+Sitemap: https://trendflash.github.io/Trendflash8/sitemap.xml
