@@ -5,10 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>中東情勢の緊張拡大　地域安全保障への影響</title>
 <meta name="description" content="中東情勢の緊張が再び高まる中、地域安全保障への影響や今後の見通しを解説。">
+<link rel="stylesheet" href="../style.css">
 <style>
-body{margin:0;font-family:sans-serif;background:#f4f6f9;}
-header{background:#000;color:#fff;padding:20px;text-align:center;font-size:26px;font-weight:bold;}
-.container{max-width:800px;margin:30px auto;padding:20px;background:#fff;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.08);}
+body{margin:0;font-family:sans-serif;background:#f4f6f9;color:#111;}
+.top-bar{background:#000;color:#fff;padding:6px 20px;text-align:right;font-size:14px;position:fixed;width:100%;top:0;z-index:100;}
+header{background:#000;color:#fff;padding:20px;text-align:center;font-size:26px;font-weight:bold;margin-top:30px;}
+.container{max-width:800px;margin:20px auto;padding:20px;background:#fff;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.08);}
 h1{color:#000;font-size:24px;}
 h2{margin-top:28px;font-size:18px;border-left:4px solid #000;padding-left:8px;}
 p{line-height:1.8;margin-top:10px;}
@@ -16,29 +18,35 @@ p{line-height:1.8;margin-top:10px;}
 .back{margin-top:30px;}
 .back a{text-decoration:none;color:#000;font-weight:bold;}
 a.source{color:#000;}
+.related{margin-top:40px;border-top:1px solid #ddd;padding-top:20px;}
+.related a{display:block;color:#000;margin-top:6px;text-decoration:none;}
 </style>
 </head>
 <body>
+
+<div class="top-bar" id="topBar"></div>
+
 <header>TrendFlash</header>
 <div class="container">
+
 <h1>中東情勢の緊張拡大　地域安全保障への影響</h1>
-<div class="date">2026年3月4日</div>
+<div class="date">2026年3月5日</div>
 
 <h2>緊張の背景</h2>
 <p>
-中東では複数国間の軍事的緊張が再び高まっており、特にイスラエルとその周辺国との対立が注目されている。地域の政治的対立や過去の紛争の記憶が緊張の火種となっている。
+中東では複数国間の軍事的緊張が再び高まり、特にイスラエルとその周辺国との対立が注目されている。地域の政治的対立や過去の紛争の記憶が緊張の火種となっている。
 <a href="https://www.reuters.com/world/middle-east/" target="_blank" class="source">[Reuters]</a>
 </p>
 
 <h2>軍事・安全保障上の影響</h2>
 <p>
-局地的な衝突の拡大は、民間人への被害だけでなく、地域全体の安全保障にも影響を及ぼす可能性がある。軍事演習や防衛体制の強化が進められている。
+局地的な衝突の拡大は、民間人への被害だけでなく地域全体の安全保障にも影響する可能性がある。軍事演習や防衛体制の強化が進められている。
 <a href="https://www.bbc.com/news/world-middle-east-xxxx" target="_blank" class="source">[BBC]</a>
 </p>
 
 <h2>国際社会の対応</h2>
 <p>
-国連や欧米諸国は外交的解決の促進を呼びかけている。緊張緩和のための協議が各所で進められており、経済制裁や調停案が検討されている。
+国連や欧米諸国は外交的解決の促進を呼びかけている。緊張緩和のための協議が各所で進められており、経済制裁や調停案も検討されている。
 <a href="https://www.un.org/press/en/" target="_blank" class="source">[UN]</a>
 </p>
 
@@ -47,7 +55,29 @@ a.source{color:#000;}
 今後は緊張が長期化するか、外交努力で沈静化するかが注目点。投資や原油市場への影響も視野に入れ、情勢を注視する必要がある。
 </p>
 
+<div class="related">
+<h3>関連記事</h3>
+<a href="article7.html">イスラエル・レバノン衝突速報</a>
+<a href="article9.html">中東の緊張が世界経済に与える影響</a>
+</div>
+
 <div class="back"><a href="../index.html">← トップへ戻る</a></div>
 </div>
+
+<script>
+function updateTopBar(){
+    const now=new Date();
+    const yyyy=now.getFullYear();
+    const mm=String(now.getMonth()+1).padStart(2,'0');
+    const dd=String(now.getDate()).padStart(2,'0');
+    const hh=String(now.getHours()).padStart(2,'0');
+    const min=String(now.getMinutes()).padStart(2,'0');
+    const ss=String(now.getSeconds()).padStart(2,'0');
+    document.getElementById('topBar').textContent=`${yyyy}-${mm}-${dd} ${hh}:${min}:${ss}`;
+}
+setInterval(updateTopBar,1000);
+updateTopBar();
+</script>
+
 </body>
 </html>

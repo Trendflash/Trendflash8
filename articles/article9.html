@@ -5,10 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>中東の緊張が世界経済に与える影響</title>
 <meta name="description" content="中東情勢の緊張が原油市場や金融市場に与える影響、経済的リスクと今後の展望を解説。">
+<link rel="stylesheet" href="../style.css">
 <style>
-body{margin:0;font-family:sans-serif;background:#f4f6f9;}
-header{background:#000;color:#fff;padding:20px;text-align:center;font-size:26px;font-weight:bold;}
-.container{max-width:800px;margin:30px auto;padding:20px;background:#fff;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.08);}
+body{margin:0;font-family:sans-serif;background:#f4f6f9;color:#111;}
+.top-bar{background:#000;color:#fff;padding:6px 20px;text-align:right;font-size:14px;position:fixed;width:100%;top:0;z-index:100;}
+header{background:#000;color:#fff;padding:20px;text-align:center;font-size:26px;font-weight:bold;margin-top:30px;}
+.container{max-width:800px;margin:20px auto;padding:20px;background:#fff;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.08);}
 h1{color:#000;font-size:24px;}
 h2{margin-top:28px;font-size:18px;border-left:4px solid #000;padding-left:8px;}
 p{line-height:1.8;margin-top:10px;}
@@ -16,13 +18,19 @@ p{line-height:1.8;margin-top:10px;}
 .back{margin-top:30px;}
 .back a{text-decoration:none;color:#000;font-weight:bold;}
 a.source{color:#000;}
+.related{margin-top:40px;border-top:1px solid #ddd;padding-top:20px;}
+.related a{display:block;color:#000;margin-top:6px;text-decoration:none;}
 </style>
 </head>
 <body>
+
+<div class="top-bar" id="topBar"></div>
+
 <header>TrendFlash</header>
 <div class="container">
+
 <h1>中東の緊張が世界経済に与える影響</h1>
-<div class="date">2026年3月4日</div>
+<div class="date">2026年3月5日</div>
 
 <h2>原油市場への影響</h2>
 <p>
@@ -46,7 +54,29 @@ a.source{color:#000;}
 中東情勢の進展次第で世界経済への影響が拡大する可能性がある。市場関係者は短期的な変動だけでなく、中長期の安定化策にも注目している。
 </p>
 
+<div class="related">
+<h3>関連記事</h3>
+<a href="article8.html">中東情勢の緊張拡大　地域安全保障への影響</a>
+<a href="article10.html">教育現場で広がるAI活用　学習スタイルはどう変わるか</a>
+</div>
+
 <div class="back"><a href="../index.html">← トップへ戻る</a></div>
 </div>
+
+<script>
+function updateTopBar(){
+    const now=new Date();
+    const yyyy=now.getFullYear();
+    const mm=String(now.getMonth()+1).padStart(2,'0');
+    const dd=String(now.getDate()).padStart(2,'0');
+    const hh=String(now.getHours()).padStart(2,'0');
+    const min=String(now.getMinutes()).padStart(2,'0');
+    const ss=String(now.getSeconds()).padStart(2,'0');
+    document.getElementById('topBar').textContent=`${yyyy}-${mm}-${dd} ${hh}:${min}:${ss}`;
+}
+setInterval(updateTopBar,1000);
+updateTopBar();
+</script>
+
 </body>
 </html>

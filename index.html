@@ -5,25 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>TrendFlash | 最新ニュースまとめ</title>
+
 <meta name="description" content="中東情勢・AI・テクノロジー・経済・気候変動など最新ニュースを分かりやすく解説。TrendFlash公式サイト。">
 <meta name="keywords" content="中東情勢, AI, 教育AI, テクノロジー, 世界経済, 気候変動, ニュース">
 <meta name="robots" content="index, follow">
 
-<!-- OGP（SNS拡散強化） -->
+<!-- OGP -->
 <meta property="og:title" content="TrendFlash | 最新ニュースまとめ">
 <meta property="og:description" content="中東情勢・AI・経済など話題ニュースを分かりやすく解説">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://あなたのURL.github.io/">
-<meta property="og:image" content="https://あなたのURL.github.io/ogp.jpg">
+<meta property="og:url" content="https://trendflash.github.io/Trendflash8/">
+<meta property="og:image" content="https://trendflash.github.io/Trendflash8/ogp.jpg">
+
+<link rel="stylesheet" href="style.css">
 
 <style>
-body{
-  font-family:"Segoe UI",Arial,sans-serif;
-  background:#f3f3f3;
-  margin:0;
-}
 
-/* 黒ヘッダー */
+/* ヒーローヘッダー */
 .hero{
   background:#000;
   color:#fff;
@@ -49,32 +47,37 @@ body{
   padding:20px;
 }
 
+/* 記事カード */
 .article-card{
   background:#fff;
-  padding:20px;
+  padding:22px;
   margin-bottom:20px;
-  border-radius:10px;
-  transition:0.2s;
+  border-radius:12px;
+  transition:0.25s;
+  box-shadow:0 6px 18px rgba(0,0,0,0.06);
 }
 
 .article-card:hover{
-  transform:translateY(-3px);
+  transform:translateY(-4px);
+  box-shadow:0 12px 26px rgba(0,0,0,0.12);
 }
 
 .article-card h2{
   margin-top:0;
+  font-size:22px;
 }
 
 .article-card a{
   text-decoration:none;
-  color:#000;
+  color:#111;
 }
 
 .article-card p{
   color:#444;
+  margin-top:8px;
 }
 
-/* 共有ボタン */
+/* 共有 */
 .share{
   margin-top:10px;
 }
@@ -85,6 +88,7 @@ body{
   text-decoration:none;
   color:#0078D7;
 }
+
 </style>
 </head>
 
@@ -98,7 +102,8 @@ body{
 <div class="container" id="articles"></div>
 
 <script>
-/* 日付・時刻（秒まで） */
+
+/* 日付表示 */
 function updateDate(){
   const now = new Date();
   const formatted =
@@ -108,71 +113,99 @@ function updateDate(){
     now.getHours().toString().padStart(2,'0') + ":" +
     now.getMinutes().toString().padStart(2,'0') + ":" +
     now.getSeconds().toString().padStart(2,'0');
+
   document.getElementById("currentDate").textContent = formatted;
 }
+
 updateDate();
 setInterval(updateDate,1000);
 
+
 /* 新しい順 */
 const articleList = [
-  "articles/article19.html",
-  "articles/article18.html",
-  "articles/article17.html",
-  "articles/article16.html",
-  "articles/article15.html",
-  "articles/article14.html",
-  "articles/article13.html",
-  "articles/article12.html",
-  "articles/article11.html",
-  "articles/article10.html",
-  "articles/article9.html",
-  "articles/article8.html",
-  "articles/article7.html",
-  "articles/article6.html",
-  "articles/article5.html",
-  "articles/article4.html",
-  "articles/article3.html",
-  "articles/article2.html",
-  "articles/article1.html"
+"articles/article19.html",
+"articles/article18.html",
+"articles/article17.html",
+"articles/article16.html",
+"articles/article15.html",
+"articles/article14.html",
+"articles/article13.html",
+"articles/article12.html",
+"articles/article11.html",
+"articles/article10.html",
+"articles/article9.html",
+"articles/article8.html",
+"articles/article7.html",
+"articles/article6.html",
+"articles/article5.html",
+"articles/article4.html",
+"articles/article3.html",
+"articles/article2.html",
+"articles/article1.html"
 ];
 
+
 /* 記事読み込み */
-articleList.forEach(url=>{
-  fetch(url)
-  .then(res=>res.text())
-  .then(data=>{
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(data,"text/html");
+async function loadArticles(){
 
-    const title = doc.querySelector("h1")
-      ? doc.querySelector("h1").innerText
-      : "タイトル未取得";
+for(const url of articleList){
 
-    const content = doc.querySelector("p")
-      ? doc.querySelector("p").innerText
-      : "";
+try{
 
-    let preview = content.slice(0,80);
-    if(content.length > 80){
-      preview += "...";
-    }
+const res = await fetch(url);
 
-    const currentUrl = window.location.origin + "/" + url;
+if(!res.ok) continue;
 
-    const card = document.createElement("div");
-    card.className="article-card";
-    card.innerHTML = `
-      <h2><a href="${url}">${title}</a></h2>
-      <p>${preview}</p>
+const html = await res.text();
 
-      <div class="share">
-        <a href="https://twitter.com/intent/tweet?text=${title}&url=${currentUrl}" target="_blank">Xで共有</a>
-        <a href="https://www.facebook.com/sharer/sharer.php?u=${currentUrl}" target="_blank">Facebook</a>
-      </div>
-    `;
-    document.getElementById("articles").appendChild(card);
-  });
-});
+const parser = new DOMParser();
+const doc = parser.parseFromString(html,"text/html");
+
+const title =
+doc.querySelector("h1")?.innerText || "タイトル未取得";
+
+const firstP =
+doc.querySelector("p")?.innerText || "";
+
+let preview = firstP.substring(0,80);
+
+if(firstP.length > 80){
+preview += "...";
+}
+
+const currentUrl =
+window.location.origin +
+window.location.pathname.replace("index.html","") +
+url;
+
+const card = document.createElement("div");
+
+card.className="article-card";
+
+card.innerHTML = `
+<h2><a href="${url}">${title}</a></h2>
+<p>${preview}</p>
+
+<div class="share">
+<a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(currentUrl)}" target="_blank">Xで共有</a>
+<a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}" target="_blank">Facebook</a>
+</div>
+`;
+
+document.getElementById("articles").appendChild(card);
+
+}catch(e){
+
+console.warn("記事読み込み失敗:",url);
+
+}
+
+}
+
+}
+
+loadArticles();
+
 </script>
 
 </body>

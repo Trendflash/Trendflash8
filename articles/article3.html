@@ -3,23 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>教育現場で広がるAI活用　学習スタイルはどう変わるか</title>
 <meta name="description" content="教育現場で進むAI活用。個別最適化学習の可能性と課題、今後の展望を解説。">
+
+<link rel="stylesheet" href="../style.css">
+
 <style>
-body{margin:0;font-family:sans-serif;background:#f4f6f9;}
-header{background:#007acc;color:#fff;padding:20px;text-align:center;font-size:26px;font-weight:bold;}
-.container{max-width:800px;margin:30px auto;padding:20px;background:#fff;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.08);}
+body{margin:0;font-family:sans-serif;background:#f4f6f9;color:#111;}
+.top-bar{background:#000;color:#fff;padding:6px 20px;text-align:right;font-size:14px;position:fixed;width:100%;top:0;z-index:100;}
+header{background:#007acc;color:#fff;padding:20px;text-align:center;font-size:26px;font-weight:bold;margin-top:30px;}
+.container{max-width:800px;margin:20px auto;padding:20px;background:#fff;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.08);}
 h1{color:#007acc;font-size:24px;}
 h2{margin-top:28px;font-size:18px;border-left:4px solid #007acc;padding-left:8px;}
 p{line-height:1.8;margin-top:10px;}
 .date{color:#666;font-size:14px;margin-bottom:20px;}
 .back{margin-top:30px;}
 .back a{text-decoration:none;color:#007acc;font-weight:bold;}
+.related{margin-top:40px;border-top:1px solid #ddd;padding-top:20px;}
+.related a{display:block;color:#007acc;margin-top:6px;text-decoration:none;}
 </style>
 </head>
 <body>
+
+<div class="top-bar" id="topBar"></div>
+
 <header>TrendFlash</header>
 <div class="container">
+
 <h1>教育現場で広がるAI活用　学習スタイルはどう変わるか</h1>
 <div class="date">2026年3月3日</div>
 
@@ -44,7 +55,29 @@ AIによる学習履歴分析で、生徒一人ひとりに合わせた問題提
 教育とテクノロジーの融合は進む見込み。現場の声を反映しつつ、最適な活用法の模索が求められている。
 </p>
 
+<div class="related">
+<h3>関連記事</h3>
+<a href="article1.html">イスラエルとイランの緊張再燃　中東情勢は新たな局面へ</a>
+<a href="article2.html">中東情勢の緊張で原油価格が変動　家計への影響は</a>
+</div>
+
 <div class="back"><a href="../index.html">← トップへ戻る</a></div>
 </div>
+
+<script>
+function updateTopBar(){
+    const now = new Date();
+    const yyyy = now.getFullYear();
+    const mm = String(now.getMonth()+1).padStart(2,'0');
+    const dd = String(now.getDate()).padStart(2,'0');
+    const hh = String(now.getHours()).padStart(2,'0');
+    const min = String(now.getMinutes()).padStart(2,'0');
+    const ss = String(now.getSeconds()).padStart(2,'0');
+    document.getElementById('topBar').textContent = `${yyyy}-${mm}-${dd} ${hh}:${min}:${ss}`;
+}
+setInterval(updateTopBar, 1000);
+updateTopBar();
+</script>
+
 </body>
 </html>

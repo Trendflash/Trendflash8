@@ -1,234 +1,254 @@
-﻿/* 基本スタイル */
-body {
-  margin: 0;
-  font-family: "Segoe UI", Arial, sans-serif;
-  background: #f4f6f9;
-  color: #111;
+﻿/* ===== TrendFlash 基本スタイル ===== */
+
+body{
+  margin:0;
+  font-family:"Segoe UI", Arial, sans-serif;
+  background:#f4f6f9;
+  color:#111;
+  line-height:1.7;
 }
 
-header {
-  background: #1e2a38;
-  color: white;
-  padding: 20px;
+/* ===== ヘッダー ===== */
+
+header{
+  background:#1e2a38;
+  color:white;
+  padding:20px;
 }
 
-header h1 {
-  margin: 0;
-  font-size: 26px;
+header h1{
+  margin:0;
+  font-size:26px;
 }
 
-nav {
-  margin-top: 10px;
+nav{
+  margin-top:10px;
 }
 
-nav button {
-  background: none;
-  border: none;
-  color: white;
-  margin-right: 15px;
-  font-size: 14px;
-  cursor: pointer;
+nav button{
+  background:none;
+  border:none;
+  color:white;
+  margin-right:15px;
+  font-size:14px;
+  cursor:pointer;
 }
 
-nav button:hover {
-  text-decoration: underline;
+nav button:hover{
+  text-decoration:underline;
 }
 
-#todayDate {
-  font-size: 12px;
-  opacity: 0.8;
-  margin-top: 5px;
+#todayDate{
+  font-size:12px;
+  opacity:0.8;
+  margin-top:5px;
 }
 
-.container {
-  max-width: 950px;
-  margin: 30px auto;
-  padding: 0 20px;
+/* ===== メインコンテナ ===== */
+
+.container{
+  max-width:950px;
+  margin:30px auto;
+  padding:0 20px;
 }
 
-/* リード記事 */
-.lead {
-  background: white;
-  padding: 25px;
-  border-radius: 14px;
-  margin-bottom: 30px;
-  box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+/* ===== リード記事 ===== */
+
+.lead{
+  background:white;
+  padding:25px;
+  border-radius:14px;
+  margin-bottom:30px;
+  box-shadow:0 8px 22px rgba(0,0,0,0.08);
 }
 
-/* 記事カード一覧 */
-.article-card {
-  background: white;
-  padding: 20px;
-  margin-bottom: 18px;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-  cursor: pointer;
-  transition: all 0.3s ease;
+/* ===== 記事カード ===== */
+
+.article-card{
+  background:white;
+  padding:20px;
+  margin-bottom:18px;
+  border-radius:12px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.06);
+  cursor:pointer;
+  transition:all 0.3s ease;
 }
 
-.article-card:hover {
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+.article-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 26px rgba(0,0,0,0.12);
 }
 
-.meta {
-  font-size: 13px;
-  color: #777;
-  margin-bottom: 8px;
+.article-card h2{
+  margin-top:0;
+  font-size:22px;
 }
 
-/* 記事ページ */
-.hidden {
-  display: none;
+.article-card a{
+  text-decoration:none;
+  color:#111;
 }
 
-.back {
-  color: #1e2a38;
-  cursor: pointer;
-  margin-bottom: 15px;
-  display: inline-block;
+.article-card p{
+  color:#444;
+  margin-top:8px;
 }
 
-#articlePage h2 {
-  font-size: 28px;
-  margin-bottom: 10px;
+/* ===== メタ情報 ===== */
+
+.meta{
+  font-size:13px;
+  color:#777;
+  margin-bottom:8px;
 }
 
-#articlePage h3 {
-  margin-top: 30px;
-  border-left: 4px solid #1e2a38;
-  padding-left: 10px;
-  font-size: 18px;
+/* ===== 記事ページ ===== */
+
+.hidden{
+  display:none;
 }
 
-#articleContent {
-  line-height: 1.9;
-  font-size: 16px;
-  margin-top: 15px;
+.back{
+  color:#1e2a38;
+  cursor:pointer;
+  margin-bottom:15px;
+  display:inline-block;
 }
 
-#articleContent p {
-  margin-bottom: 16px;
+#articlePage h2{
+  font-size:28px;
+  margin-bottom:10px;
 }
 
-/* フッター */
-footer {
-  background: #e9edf3;
-  text-align: center;
-  padding: 25px;
-  margin-top: 40px;
-  font-size: 13px;
-  color: #555;
+#articlePage h3{
+  margin-top:30px;
+  border-left:4px solid #1e2a38;
+  padding-left:10px;
+  font-size:18px;
 }
 
-/* レスポンシブ対応 */
-@media screen and (max-width: 600px) {
-  header h1 {
-    font-size: 22px;
-  }
-
-  nav button {
-    font-size: 12px;
-    margin-right: 10px;
-  }
-
-  #articlePage h2 {
-    font-size: 24px;
-  }
-
-  #articlePage h3 {
-    font-size: 16px;
-  }
-
-  #articleContent {
-    font-size: 15px;
-  }
-}
-/* ===== TrendFlash 記事一覧 CSSのみ強化 ===== */
-
-body {
-  max-width: 950px;
-  margin: 0 auto;
-  padding: 20px;
-  background: #f4f6f9;
-  font-family: "Segoe UI", Arial, sans-serif;
-  color: #111;
-  line-height: 1.7;
+#articleContent{
+  line-height:1.9;
+  font-size:16px;
+  margin-top:15px;
 }
 
-h1 {
-  margin: 40px 0 30px 0;
-  font-size: 32px;
-  border-left: 6px solid #0078D7;
-  padding-left: 15px;
+#articleContent p{
+  margin-bottom:16px;
 }
 
-/* リスト初期化 */
-ul {
-  list-style: none;
-  padding: 0;
+/* ===== 記事一覧カードUI（SEO記事リスト用） ===== */
+
+ul{
+  list-style:none;
+  padding:0;
 }
 
-/* 記事カード */
-ul li {
-  background: white;
-  padding: 24px 22px;
-  margin-bottom: 20px;
-  border-radius: 16px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-  transition: all 0.3s ease;
-  position: relative;
+ul li{
+  background:white;
+  padding:24px 22px;
+  margin-bottom:20px;
+  border-radius:16px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.06);
+  transition:all 0.3s ease;
+  position:relative;
 }
 
-/* 浮き上がり演出 */
-ul li:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 14px 30px rgba(0,0,0,0.12);
+ul li:hover{
+  transform:translateY(-4px);
+  box-shadow:0 14px 30px rgba(0,0,0,0.12);
 }
 
-/* 記事タイトル */
-ul li a {
-  text-decoration: none;
-  color: #111;
-  font-weight: bold;
-  font-size: 18px;
-  display: block;
+ul li a{
+  text-decoration:none;
+  color:#111;
+  font-weight:bold;
+  font-size:18px;
+  display:block;
 }
 
-ul li a:hover {
-  color: #0078D7;
+ul li a:hover{
+  color:#0078D7;
 }
 
-/* 自動カテゴリ風ラベル（疑似要素） */
-ul li::before {
-  content: "NEWS";
-  position: absolute;
-  top: -10px;
-  left: 20px;
-  background: #0078D7;
-  color: white;
-  font-size: 11px;
-  font-weight: bold;
-  padding: 4px 10px;
-  border-radius: 20px;
+/* NEWSラベル */
+
+ul li::before{
+  content:"NEWS";
+  position:absolute;
+  top:-10px;
+  left:20px;
+  background:#0078D7;
+  color:white;
+  font-size:11px;
+  font-weight:bold;
+  padding:4px 10px;
+  border-radius:20px;
 }
 
-/* ===== モバイル最適化 ===== */
-@media (max-width: 600px) {
+/* ===== SNS共有 ===== */
 
-  body {
-    padding: 15px;
-  }
+.share{
+  margin-top:10px;
+}
 
-  h1 {
-    font-size: 24px;
-  }
+.share a{
+  font-size:14px;
+  margin-right:10px;
+  text-decoration:none;
+  color:#0078D7;
+}
 
-  ul li {
-    padding: 20px;
-  }
+/* ===== フッター ===== */
 
-  ul li a {
-    font-size: 16px;
-  }
+footer{
+  background:#e9edf3;
+  text-align:center;
+  padding:25px;
+  margin-top:40px;
+  font-size:13px;
+  color:#555;
+}
+
+/* ===== モバイル対応 ===== */
+
+@media screen and (max-width:600px){
+
+header h1{
+  font-size:22px;
+}
+
+nav button{
+  font-size:12px;
+  margin-right:10px;
+}
+
+.article-card{
+  padding:18px;
+}
+
+.article-card h2{
+  font-size:18px;
+}
+
+#articlePage h2{
+  font-size:24px;
+}
+
+#articlePage h3{
+  font-size:16px;
+}
+
+#articleContent{
+  font-size:15px;
+}
+
+ul li{
+  padding:20px;
+}
+
+ul li a{
+  font-size:16px;
+}
 
 }

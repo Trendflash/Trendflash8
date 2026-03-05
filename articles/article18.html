@@ -5,48 +5,54 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>イスラエル国内の現状 市民生活への影響と戦時体制の実態</title>
 <meta name="description" content="イランとの戦争が続く中、イスラエル国内では何が起きているのか。市民生活、経済、避難状況を分析する。">
+<link rel="stylesheet" href="../style.css">
 <style>
 body { font-family: sans-serif; max-width: 800px; margin: auto; padding: 20px; background:#f4f4f4; line-height:1.8;}
 h1 { color:#b30000;}
 h2 { margin-top:30px;}
+.back{margin-top:30px;}
+.back a{text-decoration:none;color:#000;font-weight:bold;}
+.related{margin-top:40px;}
+.related ul{list-style:none;padding-left:0;}
+.related li{margin-bottom:10px;}
+.related a{color:#000;text-decoration:none;}
 </style>
 </head>
 <body>
-
+<header>TrendFlash</header>
+<div class="container">
 <h1>イスラエル国内の現状 市民生活への影響と戦時体制の実態</h1>
-
-<p>
-イランとの軍事衝突が長期化する中、イスラエル国内では厳戒態勢が続いている。
-空襲警報が鳴る地域もあり、市民は防空壕への避難を繰り返している。
-</p>
+<div class="date"></div>
 
 <h2>市民生活への影響</h2>
 <p>
-学校の休校、商業施設の営業時間短縮など、生活への影響は拡大している。
-観光業は大打撃を受け、航空便の運航停止も相次いでいる。
+学校の休校、商業施設の営業時間短縮など、生活への影響は拡大しています。観光業は大打撃を受け、航空便の運航停止も相次いでいます。
 </p>
 
 <h2>経済への打撃</h2>
 <p>
-IT産業が強いイスラエルだが、海外投資の一部は様子見姿勢に入っている。
-株式市場は不安定な動きを続けている。
+IT産業が強いイスラエルだが、海外投資の一部は様子見姿勢に入っており、株式市場は不安定な動きを続けています。
 </p>
 
 <h2>政府の対応</h2>
 <p>
-政府は予備役の動員を進め、防衛体制を強化している。
-同時に国民への情報発信を続け、混乱を防ごうとしている。
+政府は予備役の動員を進め、防衛体制を強化しています。同時に国民への情報発信を続け、混乱を防ごうとしています。
 </p>
 
-<p>
-戦争の長期化は社会全体に重い影を落としている。
-国内の結束が試される状況だ。
-</p>
-<h2>関連記事</h2>
+<div class="related">
+<h3>関連記事</h3>
 <ul>
 <li><a href="article15.html">イラン・イスラエル戦争はいつ終わるのか 停戦の可能性</a></li>
 <li><a href="article19.html">イラン国内の反応 国民の声と経済不安</a></li>
 <li><a href="article14.html">第三次世界大戦の可能性はあるのか</a></li>
 </ul>
+</div>
+
+<div class="back"><a href="../index.html">← トップへ戻る</a></div>
+</div>
+
+<script>
+document.querySelector('.date').textContent = new Date().getFullYear() + '年' + (new Date().getMonth()+1) + '月' + new Date().getDate() + '日';
+</script>
 </body>
 </html>
