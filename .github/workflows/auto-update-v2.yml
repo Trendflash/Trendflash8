@@ -1,0 +1,40 @@
+name: Auto Update Index & Sitemap
+
+# articles/** に push があったときだけ実行
+on:
+  push:
+    paths:
+      - 'articles/**'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # リポジトリをチェックアウト
+      - uses: actions/checkout@v3
+
+      # Node.js セットアップ
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      # index.html を自動生成
+      - name: Generate index.html
+        run: |
+          node scripts/generate_index.js
+
+      # sitemap.xml を自動生成
+      - name: Generate sitemap.xml
+        run: |
+          node scripts/generate_sitemap.js
+
+      # 生成されたファイルをコミット & push
+      - name: Commit changes
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add index.html sitemap.xml
+          git commit -m "Auto-update index.html & sitemap.xml" || echo "No changes"
+          git push
