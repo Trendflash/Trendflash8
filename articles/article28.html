@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>アラブ首長国連邦（UAE）の経済・外交情勢</title>
+<meta name="description" content="UAE国内の経済・外交・社会情勢を1400文字前後で解説">
+<link rel="stylesheet" href="../style.css">
+<style>
+body{margin:0;font-family:sans-serif;background:#f4f6f9;}
+header{background:#000;color:#fff;padding:20px;text-align:center;font-size:26px;font-weight:bold;}
+.container{max-width:800px;margin:30px auto;padding:20px;background:#fff;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.08);}
+h1{color:#000;font-size:24px;}
+h2{margin-top:28px;font-size:18px;border-left:4px solid #000;padding-left:8px;}
+p{line-height:1.8;margin-top:10px;}
+.date{color:#666;font-size:14px;margin-bottom:20px;}
+.back{margin-top:30px;}
+.back a{text-decoration:none;color:#000;font-weight:bold;}
+.related{margin-top:40px;}
+.related h3{font-size:18px;border-left:4px solid #000;padding-left:8px;margin-bottom:12px;}
+.related ul{list-style:none;padding-left:0;}
+.related li{margin-bottom:10px;}
+.related a{color:#000;text-decoration:none;}
+</style>
+</head>
+<body>
+<header>TrendFlash</header>
+<div class="container">
+<h1>アラブ首長国連邦（UAE）の経済・外交情勢</h1>
+<div class="date"></div>
+
+<h2>経済発展と投資戦略</h2>
+<p>UAEは石油収入を基盤に、観光・金融・インフラ分野で経済多角化を進めています。外国投資誘致や国際貿易の拡大が国内経済安定に寄与しています。</p>
+
+<h2>外交関係と地域安定</h2>
+<p>湾岸諸国や中東全域との外交関係は、安全保障や経済政策に直結しています。国際協議や地域連携が安定化の鍵となっています。</p>
+
+<h2>社会政策と生活向上</h2>
+<p>教育・医療制度の整備や文化・スポーツ活動の促進が、市民生活の向上に貢献しています。女性や若年層の社会参加拡大も進んでいます。</p>
+
+<h2>安全保障と防衛戦略</h2>
+<p>地域紛争やテロリズムへの対応として、軍事・警備体制の整備と国際協力が進められています。外交・経済・安全保障を統合した戦略が重要です。</p>
+
+<div class="related">
+<h3>関連記事</h3>
+<ul>
+<li><a href="article27.html">エジプト国内の経済・政治動向</a></li>
+<li><a href="article26.html">トルコ国内の政治・経済動向</a></li>
+<li><a href="article25.html">カタール国内の経済・外交戦略</a></li>
+</ul>
+</div>
+
+<div class="back"><a href="../index.html">← トップへ戻る</a></div>
+</div>
+
+<script>
+function updateDate(){
+  const now = new Date();
+  const formatted =
+    now.getFullYear() + "年" +
+    (now.getMonth()+1) + "月" +
+    now.getDate() + "日 " +
+    now.getHours().toString().padStart(2,'0') + ":" +
+    now.getMinutes().toString().padStart(2,'0') + ":" +
+    now.getSeconds().toString().padStart(2,'0');
+  document.querySelector('.date').textContent = formatted;
+}
+updateDate();
+setInterval(updateDate,1000);
+</script>
+
+</body>
+</html>

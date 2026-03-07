@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>レバノン国内の政治・経済動向</title>
+<meta name="description" content="レバノン国内の政治・経済・社会情勢を1400文字前後で解説">
+<link rel="stylesheet" href="../style.css">
+<style>
+body{margin:0;font-family:sans-serif;background:#f4f6f9;}
+header{background:#000;color:#fff;padding:20px;text-align:center;font-size:26px;font-weight:bold;}
+.container{max-width:800px;margin:30px auto;padding:20px;background:#fff;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.08);}
+h1{color:#000;font-size:24px;}
+h2{margin-top:28px;font-size:18px;border-left:4px solid #000;padding-left:8px;}
+p{line-height:1.8;margin-top:10px;}
+.date{color:#666;font-size:14px;margin-bottom:20px;}
+.back{margin-top:30px;}
+.back a{text-decoration:none;color:#000;font-weight:bold;}
+.related{margin-top:40px;}
+.related h3{font-size:18px;border-left:4px solid #000;padding-left:8px;margin-bottom:12px;}
+.related ul{list-style:none;padding-left:0;}
+.related li{margin-bottom:10px;}
+.related a{color:#000;text-decoration:none;}
+</style>
+</head>
+<body>
+<header>TrendFlash</header>
+<div class="container">
+<h1>レバノン国内の政治・経済動向</h1>
+<div class="date"></div>
+
+<h2>政治体制と権力均衡</h2>
+<p>レバノン国内では多宗派体制による政治的均衡が続き、政策決定には各宗派間の調整が不可欠です。政治的対立やデモ活動が散発的に発生しており、国内の安定性が注目されています。</p>
+
+<h2>経済危機と生活への影響</h2>
+<p>長期的な経済危機が続き、通貨価値の下落や物価上昇が市民生活に影響を及ぼしています。政府は一部補助金政策を実施していますが、社会不満は依然高く、国際支援や投資が復興の鍵となっています。</p>
+
+<h2>地域関係と安全保障</h2>
+<p>隣国シリアやイスラエルとの国境地域での安全保障リスクが存在し、国内政治と外交政策に直接影響を与えています。和平交渉や国際協議の進展が注目されています。</p>
+
+<h2>社会・文化活動</h2>
+<p>教育・医療の改善が進み、文化・スポーツイベントも徐々に再開されています。特に若者層の社会参加や地域活動の活性化が国内の安定化に寄与しています。</p>
+
+<div class="related">
+<h3>関連記事</h3>
+<ul>
+<li><a href="article21.html">イラク国内の安全保障と経済動向</a></li>
+<li><a href="article20.html">シリア情勢と国際関係の最新動向</a></li>
+<li><a href="article19.html">イスラエル・レバノン情勢速報</a></li>
+</ul>
+</div>
+
+<div class="back"><a href="../index.html">← トップへ戻る</a></div>
+</div>
+
+<script>
+function updateDate(){
+  const now = new Date();
+  const formatted =
+    now.getFullYear() + "年" +
+    (now.getMonth()+1) + "月" +
+    now.getDate() + "日 " +
+    now.getHours().toString().padStart(2,'0') + ":" +
+    now.getMinutes().toString().padStart(2,'0') + ":" +
+    now.getSeconds().toString().padStart(2,'0');
+  document.querySelector('.date').textContent = formatted;
+}
+updateDate();
+setInterval(updateDate,1000);
+</script>
+
+</body>
+</html>

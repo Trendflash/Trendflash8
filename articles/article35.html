@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>国連安全保障理事会と中東情勢</title>
+<meta name="description" content="中東地域と国連常任理事国の関係を1400文字前後で解説">
+<link rel="stylesheet" href="../style.css">
+<style>
+body{margin:0;font-family:sans-serif;background:#f4f6f9;}
+header{background:#000;color:#fff;padding:20px;text-align:center;font-size:26px;font-weight:bold;}
+.container{max-width:800px;margin:30px auto;padding:20px;background:#fff;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.08);}
+h1{color:#000;font-size:24px;}
+h2{margin-top:28px;font-size:18px;border-left:4px solid #000;padding-left:8px;}
+p{line-height:1.8;margin-top:10px;}
+.date{color:#666;font-size:14px;margin-bottom:20px;}
+.back{margin-top:30px;}
+.back a{text-decoration:none;color:#000;font-weight:bold;}
+.related{margin-top:40px;}
+.related h3{font-size:18px;border-left:4px solid #000;padding-left:8px;margin-bottom:12px;}
+.related ul{list-style:none;padding-left:0;}
+.related li{margin-bottom:10px;}
+.related a{color:#000;text-decoration:none;}
+</style>
+</head>
+<body>
+<header>TrendFlash</header>
+<div class="container">
+<h1>国連安全保障理事会と中東情勢</h1>
+<div class="date"></div>
+
+<h2>常任理事国の役割</h2>
+<p>国連安全保障理事会の常任理事国は、中東情勢において大きな影響力を持っています。安全保障決議、制裁措置、和平交渉への参加などを通じて、地域安定化や紛争解決に関与しています。</p>
+
+<h2>中東諸国への影響</h2>
+<p>中東地域の政治・経済・安全保障政策は常任理事国の動向と密接に関連しています。特に湾岸諸国やイラン、シリアの外交戦略には国際的な調整や支援が不可欠です。</p>
+
+<h2>外交協議と国際的調整</h2>
+<p>常任理事国は中東諸国との定期協議を通じて、軍事緊張緩和や経済援助、和平プロセスの調整を行っています。これにより、地域全体の安定性が向上します。</p>
+
+<h2>課題と展望</h2>
+<p>地政学リスクや紛争の長期化は依然として課題です。今後は常任理事国との協調を深めつつ、中東地域の安定化と経済復興を両立させることが重要です。</p>
+
+<div class="related">
+<h3>関連記事</h3>
+<ul>
+<li><a href="article34.html">イラクの治安対策と地域安全保障</a></li>
+<li><a href="article36.html">中東諸国におけるビットコイン規制動向</a></li>
+<li><a href="article32.html">UAEの観光・投資戦略と経済多角化</a></li>
+</ul>
+</div>
+
+<div class="back"><a href="../index.html">← トップへ戻る</a></div>
+</div>
+
+<script>
+function updateDate(){
+  const now=new Date();
+  const formatted=now.getFullYear()+"年"+(now.getMonth()+1)+"月"+now.getDate()+"日 "
+                  +now.getHours().toString().padStart(2,'0')+":"
+                  +now.getMinutes().toString().padStart(2,'0')+":"
+                  +now.getSeconds().toString().padStart(2,'0');
+  document.querySelector('.date').textContent=formatted;
+}
+updateDate(); setInterval(updateDate,1000);
+</script>
+</body>
+</html>

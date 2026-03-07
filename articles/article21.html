@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>イラク国内の安全保障と経済動向</title>
+<meta name="description" content="イラク国内の政治・経済・安全保障の最新動向を1400文字前後で解説">
+<link rel="stylesheet" href="../style.css">
+<style>
+body{margin:0;font-family:sans-serif;background:#f4f6f9;}
+header{background:#000;color:#fff;padding:20px;text-align:center;font-size:26px;font-weight:bold;}
+.container{max-width:800px;margin:30px auto;padding:20px;background:#fff;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.08);}
+h1{color:#000;font-size:24px;}
+h2{margin-top:28px;font-size:18px;border-left:4px solid #000;padding-left:8px;}
+p{line-height:1.8;margin-top:10px;}
+.date{color:#666;font-size:14px;margin-bottom:20px;}
+.back{margin-top:30px;}
+.back a{text-decoration:none;color:#000;font-weight:bold;}
+.related{margin-top:40px;}
+.related h3{font-size:18px;border-left:4px solid #000;padding-left:8px;margin-bottom:12px;}
+.related ul{list-style:none;padding-left:0;}
+.related li{margin-bottom:10px;}
+.related a{color:#000;text-decoration:none;}
+</style>
+</head>
+<body>
+<header>TrendFlash</header>
+<div class="container">
+<h1>イラク国内の安全保障と経済動向</h1>
+<div class="date"></div>
+
+<h2>治安と地域紛争</h2>
+<p>イラク国内では、地域勢力間の対立やテロリズムの脅威が依然として存在しています。政府は治安維持を強化しているものの、都市部と地方部の状況差が大きく、安全保障上の課題は続いています。</p>
+
+<h2>経済復興と社会政策</h2>
+<p>石油依存の経済構造は依然として脆弱で、インフラ再建や雇用創出が急務です。国際的支援と投資が経済安定の鍵となっており、政府は補助金や公共事業による生活支援を行っています。</p>
+
+<h2>政治的調整と外交関係</h2>
+<p>国内政治は多党間の連立調整が続き、政策決定に影響しています。また周辺国との外交関係も経済・安全保障に直結しており、地域情勢の安定化が求められます。</p>
+
+<h2>文化・社会活動</h2>
+<p>教育や医療分野の改善に加え、文化・スポーツイベントの再開が国内の活力回復につながっています。若年層の社会参加や地域活動も注目されています。</p>
+
+<div class="related">
+<h3>関連記事</h3>
+<ul>
+<li><a href="article20.html">シリア情勢と国際関係の最新動向</a></li>
+<li><a href="article19.html">イスラエル・レバノン情勢速報</a></li>
+<li><a href="article18.html">イラン国内の最新動向</a></li>
+</ul>
+</div>
+
+<div class="back"><a href="../index.html">← トップへ戻る</a></div>
+</div>
+
+<script>
+function updateDate(){
+  const now = new Date();
+  const formatted =
+    now.getFullYear() + "年" +
+    (now.getMonth()+1) + "月" +
+    now.getDate() + "日 " +
+    now.getHours().toString().padStart(2,'0') + ":" +
+    now.getMinutes().toString().padStart(2,'0') + ":" +
+    now.getSeconds().toString().padStart(2,'0');
+  document.querySelector('.date').textContent = formatted;
+}
+updateDate();
+setInterval(updateDate,1000);
+</script>
+
+</body>
+</html>

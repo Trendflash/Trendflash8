@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>カタール国内の経済・外交戦略</title>
+<meta name="description" content="カタール国内の政治・経済・外交の最新動向を1400文字前後で解説">
+<link rel="stylesheet" href="../style.css">
+<style>
+body{margin:0;font-family:sans-serif;background:#f4f6f9;}
+header{background:#000;color:#fff;padding:20px;text-align:center;font-size:26px;font-weight:bold;}
+.container{max-width:800px;margin:30px auto;padding:20px;background:#fff;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.08);}
+h1{color:#000;font-size:24px;}
+h2{margin-top:28px;font-size:18px;border-left:4px solid #000;padding-left:8px;}
+p{line-height:1.8;margin-top:10px;}
+.date{color:#666;font-size:14px;margin-bottom:20px;}
+.back{margin-top:30px;}
+.back a{text-decoration:none;color:#000;font-weight:bold;}
+.related{margin-top:40px;}
+.related h3{font-size:18px;border-left:4px solid #000;padding-left:8px;margin-bottom:12px;}
+.related ul{list-style:none;padding-left:0;}
+.related li{margin-bottom:10px;}
+.related a{color:#000;text-decoration:none;}
+</style>
+</head>
+<body>
+<header>TrendFlash</header>
+<div class="container">
+<h1>カタール国内の経済・外交戦略</h1>
+<div class="date"></div>
+
+<h2>経済多角化と投資戦略</h2>
+<p>カタールでは天然ガス収入を基盤に、経済の多角化と国際投資を推進しています。観光・金融・インフラ事業の拡大により、持続可能な成長を目指しています。</p>
+
+<h2>外交政策と地域影響</h2>
+<p>周辺国との外交関係や国際的な協力が、国内政策や経済安定に直結しています。中東地域の安全保障問題にも柔軟に対応する戦略が重要です。</p>
+
+<h2>社会改革と生活向上</h2>
+<p>教育・医療・文化活動への投資が進み、国民生活の質向上に寄与しています。若者層の教育機会拡充や女性の社会参加も政策の中心です。</p>
+
+<h2>安全保障と国際協力</h2>
+<p>国内外の安全保障リスクに対処するため、軍事・治安体制の整備と国際協力が進められています。外交・経済・安全保障を統合した戦略が安定化の鍵です。</p>
+
+<div class="related">
+<h3>関連記事</h3>
+<ul>
+<li><a href="article24.html">サウジアラビア国内の経済・外交動向</a></li>
+<li><a href="article23.html">ヨルダン国内の経済と安全保障</a></li>
+<li><a href="article22.html">レバノン国内の政治・経済動向</a></li>
+</ul>
+</div>
+
+<div class="back"><a href="../index.html">← トップへ戻る</a></div>
+</div>
+
+<script>
+function updateDate(){
+  const now = new Date();
+  const formatted =
+    now.getFullYear() + "年" +
+    (now.getMonth()+1) + "月" +
+    now.getDate() + "日 " +
+    now.getHours().toString().padStart(2,'0') + ":" +
+    now.getMinutes().toString().padStart(2,'0') + ":" +
+    now.getSeconds().toString().padStart(2,'0');
+  document.querySelector('.date').textContent = formatted;
+}
+updateDate();
+setInterval(updateDate,1000);
+</script>
+
+</body>
+</html>

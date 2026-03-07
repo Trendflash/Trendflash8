@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>トルコ国内の政治・経済動向</title>
+<meta name="description" content="トルコ国内の政治・経済・社会情勢を1400文字前後で解説">
+<link rel="stylesheet" href="../style.css">
+<style>
+body{margin:0;font-family:sans-serif;background:#f4f6f9;}
+header{background:#000;color:#fff;padding:20px;text-align:center;font-size:26px;font-weight:bold;}
+.container{max-width:800px;margin:30px auto;padding:20px;background:#fff;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.08);}
+h1{color:#000;font-size:24px;}
+h2{margin-top:28px;font-size:18px;border-left:4px solid #000;padding-left:8px;}
+p{line-height:1.8;margin-top:10px;}
+.date{color:#666;font-size:14px;margin-bottom:20px;}
+.back{margin-top:30px;}
+.back a{text-decoration:none;color:#000;font-weight:bold;}
+.related{margin-top:40px;}
+.related h3{font-size:18px;border-left:4px solid #000;padding-left:8px;margin-bottom:12px;}
+.related ul{list-style:none;padding-left:0;}
+.related li{margin-bottom:10px;}
+.related a{color:#000;text-decoration:none;}
+</style>
+</head>
+<body>
+<header>TrendFlash</header>
+<div class="container">
+<h1>トルコ国内の政治・経済動向</h1>
+<div class="date"></div>
+
+<h2>政治の安定と権力構造</h2>
+<p>トルコでは与党と野党の政治調整が国内政策に影響を与えています。特に地域政策や外交対応は国内経済や安全保障に直結しており、政治的安定が求められています。</p>
+
+<h2>経済状況と課題</h2>
+<p>インフレ率や通貨価値の変動が生活コストに影響しています。政府は投資誘致やインフラ整備を通じて経済安定を目指していますが、国民生活への影響は続いています。</p>
+
+<h2>安全保障と地域関係</h2>
+<p>国境周辺での衝突リスクや中東地域の紛争が国内の安全保障に直結しています。軍事・警備体制の強化と国際協力が重要視されています。</p>
+
+<h2>社会・文化活動</h2>
+<p>教育・医療制度の改善や文化活動・スポーツイベントの再開により、国内社会の活力回復が期待されています。若者層の社会参加も活発化しています。</p>
+
+<div class="related">
+<h3>関連記事</h3>
+<ul>
+<li><a href="article25.html">カタール国内の経済・外交戦略</a></li>
+<li><a href="article24.html">サウジアラビア国内の経済・外交動向</a></li>
+<li><a href="article23.html">ヨルダン国内の経済と安全保障</a></li>
+</ul>
+</div>
+
+<div class="back"><a href="../index.html">← トップへ戻る</a></div>
+</div>
+
+<script>
+function updateDate(){
+  const now = new Date();
+  const formatted =
+    now.getFullYear() + "年" +
+    (now.getMonth()+1) + "月" +
+    now.getDate() + "日 " +
+    now.getHours().toString().padStart(2,'0') + ":" +
+    now.getMinutes().toString().padStart(2,'0') + ":" +
+    now.getSeconds().toString().padStart(2,'0');
+  document.querySelector('.date').textContent = formatted;
+}
+updateDate();
+setInterval(updateDate,1000);
+</script>
+
+</body>
+</html>

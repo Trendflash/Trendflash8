@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ヨルダン国内の経済と安全保障</title>
+<meta name="description" content="ヨルダン国内の政治・経済・安全保障の最新動向を1400文字前後で解説">
+<link rel="stylesheet" href="../style.css">
+<style>
+body{margin:0;font-family:sans-serif;background:#f4f6f9;}
+header{background:#000;color:#fff;padding:20px;text-align:center;font-size:26px;font-weight:bold;}
+.container{max-width:800px;margin:30px auto;padding:20px;background:#fff;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.08);}
+h1{color:#000;font-size:24px;}
+h2{margin-top:28px;font-size:18px;border-left:4px solid #000;padding-left:8px;}
+p{line-height:1.8;margin-top:10px;}
+.date{color:#666;font-size:14px;margin-bottom:20px;}
+.back{margin-top:30px;}
+.back a{text-decoration:none;color:#000;font-weight:bold;}
+.related{margin-top:40px;}
+.related h3{font-size:18px;border-left:4px solid #000;padding-left:8px;margin-bottom:12px;}
+.related ul{list-style:none;padding-left:0;}
+.related li{margin-bottom:10px;}
+.related a{color:#000;text-decoration:none;}
+</style>
+</head>
+<body>
+<header>TrendFlash</header>
+<div class="container">
+<h1>ヨルダン国内の経済と安全保障</h1>
+<div class="date"></div>
+
+<h2>政治安定と政策動向</h2>
+<p>ヨルダン国内では王制と議会の調整が続き、政策決定に安定性が求められています。周辺国の情勢や国際援助も国内政策に影響しており、外交面での柔軟な対応が重要です。</p>
+
+<h2>経済課題と生活影響</h2>
+<p>輸入物価の上昇や公共サービス費用の増加が市民生活に影響しています。観光業や貿易への支援策が政府の主要施策となっており、長期的な経済安定の鍵となっています。</p>
+
+<h2>安全保障と地域関係</h2>
+<p>国境地帯での治安維持や難民対応が課題であり、地域情勢と密接に関係しています。国内治安対策と外交交渉の両面からの戦略が求められています。</p>
+
+<h2>社会・文化活動</h2>
+<p>教育・医療制度の改善や文化・スポーツイベントの再開が、国内社会の安定化に寄与しています。市民の参加と地域活動が活性化の鍵となります。</p>
+
+<div class="related">
+<h3>関連記事</h3>
+<ul>
+<li><a href="article22.html">レバノン国内の政治・経済動向</a></li>
+<li><a href="article21.html">イラク国内の安全保障と経済動向</a></li>
+<li><a href="article20.html">シリア情勢と国際関係の最新動向</a></li>
+</ul>
+</div>
+
+<div class="back"><a href="../index.html">← トップへ戻る</a></div>
+</div>
+
+<script>
+function updateDate(){
+  const now = new Date();
+  const formatted =
+    now.getFullYear() + "年" +
+    (now.getMonth()+1) + "月" +
+    now.getDate() + "日 " +
+    now.getHours().toString().padStart(2,'0') + ":" +
+    now.getMinutes().toString().padStart(2,'0') + ":" +
+    now.getSeconds().toString().padStart(2,'0');
+  document.querySelector('.date').textContent = formatted;
+}
+updateDate();
+setInterval(updateDate,1000);
+</script>
+
+</body>
+</html>
