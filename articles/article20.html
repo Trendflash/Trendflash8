@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>シリア情勢と国際関係の最新動向</title>
+<meta name="description" content="シリア国内の政治・経済・安全保障の最新動向を1400文字前後で解説">
+<link rel="stylesheet" href="../style.css">
+<style>
+body{margin:0;font-family:sans-serif;background:#f4f6f9;}
+header{background:#000;color:#fff;padding:20px;text-align:center;font-size:26px;font-weight:bold;}
+.container{max-width:800px;margin:30px auto;padding:20px;background:#fff;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.08);}
+h1{color:#000;font-size:24px;}
+h2{margin-top:28px;font-size:18px;border-left:4px solid #000;padding-left:8px;}
+p{line-height:1.8;margin-top:10px;}
+.date{color:#666;font-size:14px;margin-bottom:20px;}
+.back{margin-top:30px;}
+.back a{text-decoration:none;color:#000;font-weight:bold;}
+.related{margin-top:40px;}
+.related h3{font-size:18px;border-left:4px solid #000;padding-left:8px;margin-bottom:12px;}
+.related ul{list-style:none;padding-left:0;}
+.related li{margin-bottom:10px;}
+.related a{color:#000;text-decoration:none;}
+</style>
+</head>
+<body>
+<header>TrendFlash</header>
+<div class="container">
+<h1>シリア情勢と国際関係の最新動向</h1>
+<div class="date"></div>
+
+<h2>政治的安定と権力構造</h2>
+<p>シリア国内では、政府と地域勢力間の緊張が続き、地方行政の権限分配や外交交渉に影響しています。国際社会の介入や制裁措置が国内政策に直接反映されており、政治的安定の確保が依然として課題です。反政府勢力や地域間対立の動向も注視されています。</p>
+
+<h2>経済情勢の複雑化</h2>
+<p>経済面ではインフレや生活必需品の価格上昇が市民生活を圧迫しており、エネルギー輸入制限や輸出規制が国内経済に直接影響しています。政府は一部補助金政策を実施しているものの、持続的な安定には依然課題が残ります。</p>
+
+<h2>安全保障と地域関係</h2>
+<p>国境周辺での小規模衝突や外国勢力の軍事動向が続いており、国内外の安全保障リスクが高まっています。国際協議や和平交渉の進展が求められており、地域情勢の変化に敏感な対応が必要です。</p>
+
+<h2>社会・文化の動き</h2>
+<p>教育や医療分野では徐々に制度改善が進められており、国内文化イベントも再開傾向にあります。特に若年層の社会参加や技術導入が注目されており、社会活力の回復が期待されています。</p>
+
+<div class="related">
+<h3>関連記事</h3>
+<ul>
+<li><a href="article19.html">イスラエル・レバノン情勢速報</a></li>
+<li><a href="article18.html">イラン国内の最新動向</a></li>
+<li><a href="article17.html">中東地域経済の分析</a></li>
+</ul>
+</div>
+
+<div class="back"><a href="../index.html">← トップへ戻る</a></div>
+</div>
+
+<script>
+function updateDate(){
+  const now = new Date();
+  const formatted =
+    now.getFullYear() + "年" +
+    (now.getMonth()+1) + "月" +
+    now.getDate() + "日 " +
+    now.getHours().toString().padStart(2,'0') + ":" +
+    now.getMinutes().toString().padStart(2,'0') + ":" +
+    now.getSeconds().toString().padStart(2,'0');
+  document.querySelector('.date').textContent = formatted;
+}
+updateDate();
+setInterval(updateDate,1000);
+</script>
+
+</body>
+</html>
