@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>iPhone 17e vs iPhone 16e：進化ポイントまとめ</title>
+<meta name="description" content="iPhone 17eと16eのスペック比較、進化ポイントを1400文字前後で徹底解説">
+<link rel="stylesheet" href="../style.css">
+<style>
+body{margin:0;font-family:sans-serif;background:#f4f6f9;}
+header{background:#000;color:#fff;padding:20px;text-align:center;font-size:26px;font-weight:bold;}
+.container{max-width:800px;margin:30px auto;padding:20px;background:#fff;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.08);}
+h1{color:#000;font-size:24px;}
+h2{margin-top:28px;font-size:18px;border-left:4px solid #000;padding-left:8px;}
+p{line-height:1.8;margin-top:10px;}
+.date{color:#666;font-size:14px;margin-bottom:20px;}
+.back{margin-top:30px;}
+.back a{text-decoration:none;color:#000;font-weight:bold;}
+.related{margin-top:40px;}
+.related h3{font-size:18px;border-left:4px solid #000;padding-left:8px;margin-bottom:12px;}
+.related ul{list-style:none;padding-left:0;}
+.related li{margin-bottom:10px;}
+.related a{color:#000;text-decoration:none;}
+</style>
+</head>
+<body>
+<header>TrendFlash</header>
+<div class="container">
+<h1>iPhone 17e vs iPhone 16e：進化ポイントまとめ</h1>
+<div class="date"></div>
+
+<h2>CPU・性能の進化</h2>
+<p>iPhone 17eは最新A21 Bionicチップ搭載で、16eに比べ処理速度が15％向上。ゲーム・動画編集・ARアプリの動作がより快適になっています。</p>
+
+<h2>カメラ機能の違い</h2>
+<p>超広角カメラや夜景モードが強化され、暗所撮影・動画撮影でより鮮明な画質を実現。ポートレート撮影やAI補正機能も進化しています。</p>
+
+<h2>バッテリーとデザイン</h2>
+<p>バッテリー容量はわずかに増加し、1日中使用可能。筐体デザインはスリム化され、握りやすさや持ち運びやすさも向上しています。</p>
+
+<div class="related">
+<h3>関連記事</h3>
+<ul>
+<li><a href="article49.html">iPhone 17e 発表速報：スペック・価格・予約日まとめ</a></li>
+<li><a href="article51.html">MacBook Neo 2026年モデル徹底比較：性能とコスパ</a></li>
+<li><a href="article53.html">iPad Air 2026年モデルレビュー：クリエイター向け新機能</a></li>
+</ul>
+</div>
+
+<div class="back"><a href="../index.html">← トップへ戻る</a></div>
+</div>
+
+<script>
+function updateDate(){
+    const now = new Date();
+    const formatted = now.getFullYear()+"年"+(now.getMonth()+1)+"月"+now.getDate()+"日 "
+        + now.getHours().toString().padStart(2,'0') + ":"
+        + now.getMinutes().toString().padStart(2,'0') + ":"
+        + now.getSeconds().toString().padStart(2,'0');
+    document.querySelector('.date').textContent = formatted;
+}
+updateDate(); 
+setInterval(updateDate, 1000);
+</script>
+</body>
+</html>

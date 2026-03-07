@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apple Watch Series 10 最新機能徹底解説</title>
+<meta name="description" content="Apple Watch Series 10の最新機能、健康管理・スポーツ・便利機能を1400文字前後で解説">
+<link rel="stylesheet" href="../style.css">
+<style>
+body{margin:0;font-family:sans-serif;background:#f4f6f9;}
+header{background:#000;color:#fff;padding:20px;text-align:center;font-size:26px;font-weight:bold;}
+.container{max-width:800px;margin:30px auto;padding:20px;background:#fff;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.08);}
+h1{color:#000;font-size:24px;}
+h2{margin-top:28px;font-size:18px;border-left:4px solid #000;padding-left:8px;}
+p{line-height:1.8;margin-top:10px;}
+.date{color:#666;font-size:14px;margin-bottom:20px;}
+.back{margin-top:30px;}
+.back a{text-decoration:none;color:#000;font-weight:bold;}
+.related{margin-top:40px;}
+.related h3{font-size:18px;border-left:4px solid #000;padding-left:8px;margin-bottom:12px;}
+.related ul{list-style:none;padding-left:0;}
+.related li{margin-bottom:10px;}
+.related a{color:#000;text-decoration:none;}
+</style>
+</head>
+<body>
+<header>TrendFlash</header>
+<div class="container">
+<h1>Apple Watch Series 10 最新機能徹底解説</h1>
+<div class="date"></div>
+
+<h2>健康管理機能の進化</h2>
+<p>心拍計・血中酸素・心電図測定などのセンサーが進化し、より正確な健康データ取得が可能に。睡眠トラッキングやストレス管理も強化されています。</p>
+
+<h2>スポーツ・運動機能</h2>
+<p>ランニングや水泳、サイクリングなど様々なワークアウトモードに対応。運動の記録精度が向上し、Apple Fitness+との連携もスムーズです。</p>
+
+<h2>日常便利機能</h2>
+<p>Siriによる音声操作、通知管理、Apple Payなども改良され、スマートウォッチとしての利便性がさらに向上しています。</p>
+
+<div class="related">
+<h3>関連記事</h3>
+<ul>
+<li><a href="article54.html">AirPods Pro 3 音質と装着感レビュー</a></li>
+<li><a href="article56.html">iPhone 17e カメラ機能レビュー：夜景・動画撮影</a></li>
+<li><a href="article52.html">iPhone 17e vs iPhone 16e：進化ポイントまとめ</a></li>
+</ul>
+</div>
+
+<div class="back"><a href="../index.html">← トップへ戻る</a></div>
+</div>
+
+<script>
+function updateDate(){
+    const now = new Date();
+    const formatted = now.getFullYear()+"年"+(now.getMonth()+1)+"月"+now.getDate()+"日 "
+        + now.getHours().toString().padStart(2,'0') + ":"
+        + now.getMinutes().toString().padStart(2,'0') + ":"
+        + now.getSeconds().toString().padStart(2,'0');
+    document.querySelector('.date').textContent = formatted;
+}
+updateDate(); 
+setInterval(updateDate, 1000);
+</script>
+</body>
+</html>

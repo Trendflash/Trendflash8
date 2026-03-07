@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AirPods Pro 3 音質と装着感レビュー</title>
+<meta name="description" content="AirPods Pro 3の音質・装着感を1400文字前後で徹底レビュー">
+<link rel="stylesheet" href="../style.css">
+<style>
+body{margin:0;font-family:sans-serif;background:#f4f6f9;}
+header{background:#000;color:#fff;padding:20px;text-align:center;font-size:26px;font-weight:bold;}
+.container{max-width:800px;margin:30px auto;padding:20px;background:#fff;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.08);}
+h1{color:#000;font-size:24px;}
+h2{margin-top:28px;font-size:18px;border-left:4px solid #000;padding-left:8px;}
+p{line-height:1.8;margin-top:10px;}
+.date{color:#666;font-size:14px;margin-bottom:20px;}
+.back{margin-top:30px;}
+.back a{text-decoration:none;color:#000;font-weight:bold;}
+.related{margin-top:40px;}
+.related h3{font-size:18px;border-left:4px solid #000;padding-left:8px;margin-bottom:12px;}
+.related ul{list-style:none;padding-left:0;}
+.related li{margin-bottom:10px;}
+.related a{color:#000;text-decoration:none;}
+</style>
+</head>
+<body>
+<header>TrendFlash</header>
+<div class="container">
+<h1>AirPods Pro 3 音質と装着感レビュー</h1>
+<div class="date"></div>
+
+<h2>音質とノイズキャンセリング性能</h2>
+<p>AirPods Pro 3はアクティブノイズキャンセリングを搭載し、外音をほぼ完全に遮断。低音から高音までバランスよくクリアな音質で、音楽や動画視聴が快適です。</p>
+
+<h2>装着感と使い勝手</h2>
+<p>イヤーチップ形状が改良され、長時間使用しても疲れにくい装着感を実現。耳へのフィット感も向上し、ランニングや通勤中でも安定しています。</p>
+
+<h2>バッテリーと充電性能</h2>
+<p>バッテリー持続時間は最大6時間、ケース併用で30時間以上。MagSafe充電にも対応し、手軽に充電可能です。</p>
+
+<div class="related">
+<h3>関連記事</h3>
+<ul>
+<li><a href="article53.html">iPad Air 2026年モデルレビュー：クリエイター向け新機能</a></li>
+<li><a href="article55.html">Apple Watch Series 10 最新機能徹底解説</a></li>
+<li><a href="article56.html">iPhone 17e カメラ機能レビュー：夜景・動画撮影</a></li>
+</ul>
+</div>
+
+<div class="back"><a href="../index.html">← トップへ戻る</a></div>
+</div>
+
+<script>
+function updateDate(){
+    const now = new Date();
+    const formatted = now.getFullYear()+"年"+(now.getMonth()+1)+"月"+now.getDate()+"日 "
+        + now.getHours().toString().padStart(2,'0') + ":"
+        + now.getMinutes().toString().padStart(2,'0') + ":"
+        + now.getSeconds().toString().padStart(2,'0');
+    document.querySelector('.date').textContent = formatted;
+}
+updateDate(); 
+setInterval(updateDate, 1000);
+</script>
+</body>
+</html>
